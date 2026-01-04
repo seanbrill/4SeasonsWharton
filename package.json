@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "rm -rf .next && next build",
+    "serve": "npm run build && npx serve out",
     "start": "next start",
     "lint": "eslint"
   },

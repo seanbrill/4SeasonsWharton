@@ -44,7 +44,7 @@ export default function WPContent({ content, slug, className = '', isStatic = tr
 
     return (
         <div
-            className={`prose max-w-none dark:prose-invert ${className}`}
+            className={`prose max-w-none ${className}`}
             dangerouslySetInnerHTML={{ __html: displayHtml }}
         />
     );

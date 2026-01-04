@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { useWPData } from '../useWPData';
 import type { WPCarouselProps, GalleryImage } from './interfaces/WPCarousel.types';
+import { ANIMATION, LOADING, Z_INDEX } from '@/lib/constants/design-tokens';
 
 export default function WPCarousel({
     slug,
@@ -17,7 +18,7 @@ export default function WPCarousel({
     const [activeIndex, setActiveIndex] = useState(0);
     const { data: wpPageData, loading } = useWPData({
         slug,
-        field: 'whole_page_object', // Fetch whole page to parse content if needed
+        field: 'whole_page_object',
         enabled: !isStatic
     });
 
@@ -26,43 +27,51 @@ export default function WPCarousel({
     const [loadedCount, setLoadedCount] = useState(0);
 
     // Minimum images required before showing the carousel content
-    const LOAD_THRESHOLD = 2;
-    const isReady = images.length > 0 && loadedCount >= Math.min(images.length, LOAD_THRESHOLD);
+    const isReady = images.length > 0 && loadedCount >= Math.min(images.length, LOADING.CAROUSEL_MIN_IMAGES);
 
     useEffect(() => {
         let extractedImages: GalleryImage[] = [];
 
         if (isStatic && staticData) {
             extractedImages = staticData;
-        } else if (!isStatic && wpPageData) {
+        } else {
             // mode 1: ACF field (original logic)
-            if (field) {
-                const fieldData = field.split('.').reduce((obj: any, key: string) => obj?.[key], wpPageData);
+            if (field && wpPageData) {
+                const fieldData = field.split('.').reduce((obj: unknown, key: string) => {
+                    if (obj && typeof obj === 'object' && key in obj) {
+                        return (obj as Record<string, unknown>)[key];
+                    }
+                    return undefined;
+                }, wpPageData);
                 if (Array.isArray(fieldData)) {
                     extractedImages = fieldData;
                 }
             } else {
                 // mode 2: Content Extraction (New)
-                const contentToParse = pageContent || wpPageData?.content?.rendered || '';
+                const contentToParse = pageContent || (wpPageData as { content?: { rendered?: string } })?.content?.rendered || '';
+
                 if (contentToParse) {
                     const parser = new DOMParser();
                     const doc = parser.parseFromString(contentToParse, 'text/html');
                     const imgTags = Array.from(doc.querySelectorAll('img'));
 
                     extractedImages = imgTags.map((img, idx) => {
-                        // Attempt to clean up WP resized URLs to get full quality
-                        // e.g. image-300x200.jpg -> image.jpg
-                        let src = img.src;
-                        // Regex looks for -[digits]x[digits] before the extension
-                        src = src.replace(/-\d+x\d+(\.[a-zA-Z]+)$/, '$1');
+                        // Priority 1: Use the parent <a> tag href if available
+                        const parentLink = img.closest('a');
+                        let src = parentLink ? parentLink.href : img.src;
+
+                        // Priority 2: If no link, try to clean up the img src
+                        if (!parentLink) {
+                            src = src.replace(/-\d+x\d+(\.[a-zA-Z]+)$/, '$1');
+                        }
 
                         return {
                             id: idx,
                             url: src,
                             alt: img.alt,
                             caption: img.getAttribute('data-caption') || '',
-                            srcSet: img.srcset || undefined,
-                            sizes: img.sizes || undefined
+                            srcSet: undefined,
+                            sizes: undefined
                         };
                     }).filter(img => img.url);
                 }
@@ -75,12 +84,11 @@ export default function WPCarousel({
 
     // Auto-advance
     useEffect(() => {
-        // Only auto-advance if enough images are loaded
         if (images.length <= 1 || isPaused || !isReady) return;
 
         const timer = setInterval(() => {
             nextSlide();
-        }, 5000);
+        }, ANIMATION.CAROUSEL_SLIDE_DURATION);
         return () => clearInterval(timer);
     }, [activeIndex, images.length, isPaused, isReady]);
 
@@ -88,10 +96,6 @@ export default function WPCarousel({
     const handleImageLoad = () => {
         setLoadedCount(prev => prev + 1);
     };
-
-    // Always render the main container to reserve space and prevent layout shifts
-    // If no images (loading or empty), the loader overlay will show.
-    // If truly empty after load, we might want to handle that, but for now reserving space is key.
 
     const nextSlide = () => {
         if (images.length > 0) {
@@ -107,61 +111,43 @@ export default function WPCarousel({
 
     return (
         <div className={`relative w-full ${className} group overflow-hidden`}>
-            {/* Loader Overlay (Wait for first 2 images or if strictly loading) */}
+            {/* Loader Overlay */}
             {(!isReady || (loading && !isStatic)) && (
-                <div className={`absolute inset-0 z-40 bg-stone-100 flex items-center justify-center transition-opacity duration-500 ${isReady ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+                <div
+                    className={`absolute inset-0 bg-stone-100 flex items-center justify-center transition-opacity duration-500 ${isReady ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
+                    style={{ zIndex: Z_INDEX.LOADER_OVERLAY }}
+                >
                     <div className="w-12 h-12 border-4 border-amber-500 border-t-transparent rounded-full animate-spin"></div>
                 </div>
             )}
 
             {/* Main Image Display */}
-            {/* Using layout='fill' equivalent logic. We ensure the container has aspect ratio. */}
             <div className={`relative w-full ${aspectRatio} bg-stone-100 shadow-md`}>
                 {images.map((img, index) => (
                     <div
                         key={img.id || index}
-                        className={`absolute inset-0 w-full h-full transition-opacity duration-700 ease-in-out will-change-opacity ${index === activeIndex ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
+                        className={`absolute inset-0 w-full h-full transition-opacity will-change-opacity ${index === activeIndex ? 'opacity-100' : 'opacity-0 pointer-events-none'
                             }`}
+                        style={{
+                            transitionDuration: `${ANIMATION.CAROUSEL_TRANSITION_DURATION}ms`,
+                            zIndex: index === activeIndex ? Z_INDEX.CONTENT : Z_INDEX.BACKDROP
+                        }}
                     >
-                        {/* 1. Backdrop Blur Layer - Abstract Background */}
-                        {/* Only render backdrop if image is active or next/prev to save resources? 
-                            For now, keep simple but optimize standard Image usage.
-                        */}
-                        <div className="absolute inset-0 z-0 overflow-hidden transform-gpu">
-                            <Image
-                                src={img.url || (img as any).source_url}
-                                alt=""
-                                fill
-                                className="object-cover scale-150 opacity-50"
-                                style={{ filter: 'blur(80px)' }} // Increased blur for abstract feel
-                                unoptimized
-                                priority={index < 2} // Prioritize first 2 images
-                            />
-                            {/* Overlay to wash out details/enhance blend */}
-                            <div className="absolute inset-0 bg-white/20 backdrop-blur-sm"></div>
-                        </div>
+                        {/* Main Image - Optimized */}
+                        <img
+                            src={img.url}
+                            srcSet={img.srcSet}
+                            sizes={img.sizes || "100vw"}
+                            alt={img.alt || img.caption || 'Gallery Image'}
+                            className="absolute inset-0 w-full h-full object-cover drop-shadow-lg"
+                            style={{ objectFit: 'cover' }}
+                            loading={index < 2 ? "eager" : "lazy"}
+                            onLoad={handleImageLoad}
+                        />
 
-                        {/* 2. Main Foreground Image - Optimized for Mobile */}
-                        <div className="absolute inset-0 z-10 flex items-center justify-center">
-                            {/* Note: We use standard img props passed to Next Image or override srcSet behavior if unoptimized is on. 
-                                Since unoptimized=true globally, next/image won't generate srcset. 
-                                We should rely on standard browser behavior for the passed srcSet.
-                            */}
-                            <img
-                                src={img.url}
-                                srcSet={img.srcSet}
-                                sizes={img.sizes || "100vw"}
-                                alt={img.alt || img.caption || 'Gallery Image'}
-                                className="absolute inset-0 w-full h-full object-cover drop-shadow-lg"
-                                style={{ objectFit: 'cover' }}
-                                loading={index < 2 ? "eager" : "lazy"}
-                                onLoad={handleImageLoad}
-                            />
-                        </div>
-
-                        {/* Caption overlay (optional) */}
+                        {/* Caption overlay */}
                         {img.caption && (
-                            <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white p-4 text-center backdrop-blur-sm z-20 transition-transform duration-300 translate-y-full group-hover:translate-y-0">
+                            <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white p-4 text-center backdrop-blur-sm transition-transform duration-300 translate-y-full group-hover:translate-y-0" style={{ zIndex: Z_INDEX.CAROUSEL_CONTROLS }}>
                                 {img.caption}
                             </div>
                         )}

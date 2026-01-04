@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Events - 4Seasons Wharton</title>
+	<atom:link href="https://4seasonswharton.com/feed/?post_type=themo_event" rel="self" type="application/rss+xml" />
+	<link>https://4seasonswharton.com</link>
+	<description>Mediterranean Restaurant</description>
+	<lastBuildDate>Sun, 04 Jan 2026 06:28:03 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.8.3</generator>
+	<item>
+		<title>Test New Event</title>
+		<link>https://4seasonswharton.com/event/test-new-event/</link>
+					<comments>https://4seasonswharton.com/event/test-new-event/#respond</comments>
+		
+		<dc:creator><![CDATA[4seasonswharton]]></dc:creator>
+		<pubDate>Sun, 04 Jan 2026 06:26:06 +0000</pubDate>
+				<guid isPermaLink="false">https://4seasonswharton.com/?post_type=themo_event&#038;p=1957</guid>
+
+					<description><![CDATA[<p>https://api.filefreak.io/get-file/xfhx-p79d-7ebp-iifs-bzjk-pmof-cjh3-9wbq-563u this is a test for a new event</p>
+<p>The post <a href="https://4seasonswharton.com/event/test-new-event/">Test New Event</a> first appeared on <a href="https://4seasonswharton.com">4Seasons Wharton</a>.</p>]]></description>
+										<content:encoded><![CDATA[<p><a href="https://4seasonswharton.com/wp-content/uploads/2026/01/dining-3-scaled.png"><img fetchpriority="high" decoding="async" class="alignnone size-full wp-image-1942" src="https://4seasonswharton.com/wp-content/uploads/2026/01/dining-3-scaled.png" alt="The iconic 4Seasons monkey statue" width="1920" height="2560" srcset="https://4seasonswharton.com/wp-content/uploads/2026/01/dining-3-scaled.png 1920w, https://4seasonswharton.com/wp-content/uploads/2026/01/dining-3-225x300.png 225w, https://4seasonswharton.com/wp-content/uploads/2026/01/dining-3-768x1024.png 768w, https://4seasonswharton.com/wp-content/uploads/2026/01/dining-3-1152x1536.png 1152w, https://4seasonswharton.com/wp-content/uploads/2026/01/dining-3-1536x2048.png 1536w" sizes="(max-width: 1920px) 100vw, 1920px" /></a></p>
+<p><a href="https://api.filefreak.io/get-file/xfhx-p79d-7ebp-iifs-bzjk-pmof-cjh3-9wbq-563u">https://api.filefreak.io/get-file/xfhx-p79d-7ebp-iifs-bzjk-pmof-cjh3-9wbq-563u</a></p>
+<p>this is a test for a new event</p><p>The post <a href="https://4seasonswharton.com/event/test-new-event/">Test New Event</a> first appeared on <a href="https://4seasonswharton.com">4Seasons Wharton</a>.</p>]]></content:encoded>
+					
+					<wfw:commentRss>https://4seasonswharton.com/event/test-new-event/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Ladies Night Out!</title>
+		<link>https://4seasonswharton.com/event/ladies-night-out/</link>
+					<comments>https://4seasonswharton.com/event/ladies-night-out/#respond</comments>
+		
+		<dc:creator><![CDATA[4seasonswharton]]></dc:creator>
+		<pubDate>Tue, 11 Feb 2014 23:32:28 +0000</pubDate>
+				<guid isPermaLink="false">http://demo.themovation.com/eatery/?post_type=themo_event&#038;p=969</guid>
+
+					<description><![CDATA[<p>Calling all ladies!! Grab your girlfriends and leave your husband with the kids on Thursday, July 16 for a special ladies night out. Drink Specials, Appetizer Specials, and Dessert Specials all night long!</p>
+<p>The post <a href="https://4seasonswharton.com/event/ladies-night-out/">Ladies Night Out!</a> first appeared on <a href="https://4seasonswharton.com">4Seasons Wharton</a>.</p>]]></description>
+										<content:encoded><![CDATA[<p>Calling all ladies!! Grab your girlfriends and leave your husband with the kids on Thursday, July 16 for a special ladies night out. Drink Specials, Appetizer Specials, and Dessert Specials all night long!</p><p>The post <a href="https://4seasonswharton.com/event/ladies-night-out/">Ladies Night Out!</a> first appeared on <a href="https://4seasonswharton.com">4Seasons Wharton</a>.</p>]]></content:encoded>
+					
+					<wfw:commentRss>https://4seasonswharton.com/event/ladies-night-out/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

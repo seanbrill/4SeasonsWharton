@@ -3,7 +3,17 @@
 import React from 'react';
 import Image from 'next/image';
 import { useWPData } from '../useWPData';
+import type { WP_Page } from '@/types/wordpress';
 import type { WPImageProps } from './interfaces/WPImage.types';
+
+interface ImageData {
+    url: string;
+    alt: string;
+    width?: number;
+    height?: number;
+    srcSet?: string;
+    sizes?: string;
+}
 
 export default function WPImage({
     slug,
@@ -14,14 +24,14 @@ export default function WPImage({
     priority = false,
     imageIndex = 0
 }: WPImageProps) {
-    const { data, loading, error } = useWPData({
+    const { data, loading, error } = useWPData<WP_Page>({
         slug,
         field,
         enabled: !isStatic
     });
 
     // Content Extraction Logic
-    let displayContent = isStatic ? staticData : (data || staticData);
+    let displayContent: ImageData | undefined = isStatic ? staticData as ImageData : staticData as ImageData;
 
     if (!isStatic && field === 'whole_page_object' && data?.content?.rendered) {
         const parser = new DOMParser();
@@ -43,7 +53,7 @@ export default function WPImage({
                 sizes: img.sizes || undefined
             };
         } else {
-            displayContent = null;
+            displayContent = undefined;
         }
     }
 
@@ -53,8 +63,8 @@ export default function WPImage({
     const imageAlt = displayContent.alt || (displayContent as any).alt_text || '';
     const width = displayContent.width || 800;
     const height = displayContent.height || 600;
-    const srcSet = (displayContent as any).srcSet;
-    const sizes = (displayContent as any).sizes;
+    const srcSet = displayContent.srcSet;
+    const sizes = displayContent.sizes;
 
     // Use standard <img> to leverage WordPress native srcset/sizes for mobile optimization
     // Next/Image with unoptimized=true doesn't easily allow custom srcset

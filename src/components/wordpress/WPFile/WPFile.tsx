@@ -2,6 +2,13 @@
 
 import React from 'react';
 import { useWPData } from '../useWPData';
+import type { WP_Page } from '@/types/wordpress';
+
+interface FileData {
+    url: string;
+    title?: string;
+    mime_type?: string;
+}
 
 interface WPFileProps {
     // Dynamic Props
@@ -10,11 +17,7 @@ interface WPFileProps {
 
     // Static Props
     isStatic?: boolean;
-    staticData?: {
-        url: string;
-        title?: string;
-        mime_type?: string;
-    };
+    staticData?: FileData;
 
     // UI Props
     label?: string; // custom label ("Download Menu")
@@ -31,13 +34,13 @@ export default function WPFile({
     className = '',
     showIcon = true
 }: WPFileProps) {
-    const { data, loading, error } = useWPData({
+    const { data, loading, error } = useWPData<WP_Page>({
         slug,
         field,
         enabled: !isStatic
     });
 
-    let displayContent = isStatic ? staticData : (data || staticData);
+    let displayContent: FileData | undefined = isStatic ? staticData : staticData;
 
     if (!isStatic && field === 'whole_page_object' && data?.content?.rendered) {
         const parser = new DOMParser();

@@ -13,15 +13,45 @@
   --font-mono: var(--font-geist-mono);
 }
 
-/* Dark mode removed to enforce consistent brand styling */
-/* :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  } */
-
 body {
   background: var(--background);
-  color: #1c1917;
-  /* Explicitly set to stone-900 to prevent dark mode text inversion */
+  color: #1c1917; /* stone-900 */
   font-family: Arial, Helvetica, sans-serif;
+  color-scheme: light;
+}
+
+/* Focus-visible styles for accessibility */
+*:focus-visible {
+  outline: 2px solid #d97706; /* amber-600 */
+  outline-offset: 2px;
+  border-radius: 0.25rem;
+}
+
+/* Skip link styles */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.focus\:not-sr-only:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* Ensure prose elements maintain proper color */
+.prose {
+  color: #1c1917;
 }

@@ -2,7 +2,13 @@
 
 import React from 'react';
 import { useWPData } from '../useWPData';
+import type { WP_Page } from '@/types/wordpress';
 import type { WPVideoProps } from './interfaces/WPVideo.types';
+
+interface VideoData {
+    url: string;
+    mime_type?: string;
+}
 
 export default function WPVideo({
     slug,
@@ -15,13 +21,13 @@ export default function WPVideo({
     loop = false,
     muted = false
 }: WPVideoProps) {
-    const { data, loading, error } = useWPData({
+    const { data, loading, error } = useWPData<WP_Page>({
         slug,
         field,
         enabled: !isStatic
     });
 
-    let displayContent = isStatic ? staticData : (data || staticData);
+    let displayContent: VideoData | string | undefined = isStatic ? staticData : staticData;
 
     if (!isStatic && field === 'whole_page_object' && data?.content?.rendered) {
         const parser = new DOMParser();
@@ -48,15 +54,21 @@ export default function WPVideo({
         );
     }
 
-    if (!displayContent || !displayContent.url) return null;
+    if (!displayContent) return null;
+
+    // Handle string URLs
+    const videoUrl = typeof displayContent === 'string' ? displayContent : displayContent.url;
+    const mimeType = typeof displayContent === 'object' ? displayContent.mime_type : undefined;
+
+    if (!videoUrl) return null;
 
     // Detect valid video types for HTML5 video
-    const isMp4 = displayContent.url.endsWith('.mp4') || displayContent.mime_type === 'video/mp4';
+    const isMp4 = videoUrl.endsWith('.mp4') || mimeType === 'video/mp4';
 
     if (isMp4) {
         return (
             <video
-                src={displayContent.url}
+                src={videoUrl}
                 className={className}
                 controls={controls}
                 autoPlay={autoplay}
@@ -68,12 +80,8 @@ export default function WPVideo({
         );
     }
 
-    // Fallback for OEmbed / YouTube links if just a string URL is passed as content
-    // Note: Creating a robust OEmbed component is complex, but this handles basic cases
-    // if content is just a string URL.
-    if (typeof displayContent === 'string' || displayContent.url?.includes('youtube.com') || displayContent.url?.includes('vimeo.com')) {
-        const videoUrl = typeof displayContent === 'string' ? displayContent : displayContent.url;
-        // Very basic iframe logic - would recommend a library like 'react-player' for production robustness
+    // Fallback for OEmbed / YouTube links
+    if (videoUrl.includes('youtube.com') || videoUrl.includes('vimeo.com')) {
         return (
             <div className={`aspect-video w-full ${className}`}>
                 <iframe

@@ -8,33 +8,31 @@ export const metadata: Metadata = {
 };
 
 import Link from 'next/link';
-import WPContent from '@/components/wordpress/WPContent/WPContent';
 import WPCarousel from '@/components/wordpress/WPCarousel/WPCarousel';
 import WPImage from '@/components/wordpress/WPImage/WPImage';
 
 export default async function Home() {
 
   //wordpress page cms content
-  const page = await getPageContent('home-gallery');
-  const diningAmbiance = await getPageContent('dining-ambiance');
-  const featuredItems = await getPageContent('featured-items');
+  const main_gallery = await getPageContent('home-gallery');
+  const dining_gallery = await getPageContent('dining-ambiance');
 
   return (
     <main className="min-h-screen bg-stone-50">
       {/* Full Width Dynamic Carousel */}
       <section className="w-full relative">
         <WPCarousel
-          slug="home"
+          slug="home-gallery"
           isStatic={false}
           className="w-full"
           aspectRatio="aspect-[21/9] md:aspect-[2.9/1]" // Cinematic Panoramic Ratio
-          pageContent={page?.content?.rendered}
+          pageContent={main_gallery?.content?.rendered}
         />
       </section>
 
       {/* Engaging Content Section */}
       <section className="container mx-auto px-4 py-16">
-        {page ? (
+        {main_gallery ? (
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-16">
               <h1 className="text-5xl md:text-6xl font-serif font-bold text-gray-900 mb-6">4Seasons Mediterranean</h1>
@@ -53,7 +51,7 @@ export default async function Home() {
                       isStatic={false}
                       className="h-full w-full"
                       aspectRatio="h-full"
-                      pageContent={diningAmbiance?.content?.rendered}
+                      pageContent={dining_gallery?.content?.rendered}
                     />
                   </div>
                   <div className="space-y-6">
@@ -110,9 +108,9 @@ export default async function Home() {
 
                 <div className="grid md:grid-cols-3 gap-8">
                   {[
-                    { title: "Signature Refreshments", desc: "Handcrafted cocktails & fine wines", slug: "signature-refreshments" },
-                    { title: "Authentic Cuisine", desc: "Culinary mastery in every dish", slug: "authentic-cuisine" },
-                    { title: "Sweet Indulgence", desc: "Decadent desserts to finish your meal", slug: "sweet-indulgence" }
+                    { title: "Signature Refreshments", desc: "Handcrafted cocktails & fine wines" },
+                    { title: "Authentic Cuisine", desc: "Culinary mastery in every dish" },
+                    { title: "Sweet Indulgence", desc: "Decadent desserts to finish your meal" }
                   ].map((feature, idx) => (
                     <div key={idx} className="text-center p-8 rounded-xl bg-stone-50 hover:bg-stone-100 transition-colors duration-300">
                       <div className="h-48 w-full relative mb-6 rounded-lg overflow-hidden shadow-md">
@@ -122,7 +120,6 @@ export default async function Home() {
                           imageIndex={idx} // 0, 1, 2
                           className="object-cover w-full h-full"
                           isStatic={false}
-
                         />
                       </div>
                       <h3 className="text-xl font-bold text-stone-800 mb-2">{feature.title}</h3>

@@ -112,3 +112,80 @@ export async function getPageContent(slug: string) {
     // Fallback to mock
     return MOCK_PAGE_CONTENT[slug] || null;
 }
+
+export interface WP_Event {
+    id: string;
+    title: string;
+    link: string;
+    date: string;
+    content: string;
+    excerpt: string;
+}
+
+export async function getEvents(): Promise<WP_Event[]> {
+    // Use the RSS feed as a workaround since the REST API is disabled for this CPT
+    const RSS_URL = 'https://4seasonswharton.com/feed/?post_type=themo_event';
+
+    try {
+        const res = await fetch(RSS_URL, {
+            next: { revalidate: 3600 }, // Rewrite cache every hour
+        });
+
+        if (!res.ok) {
+            console.error('Failed to fetch events RSS feed');
+            return [];
+        }
+
+        const xmlText = await res.text();
+        const events: WP_Event[] = [];
+
+        // Simple Regex Parsing to avoid heavyweight XML dependencies
+        // Find all <item> blocks
+        const itemRegex = /<item>([\s\S]*?)<\/item>/g;
+        let match;
+
+        while ((match = itemRegex.exec(xmlText)) !== null) {
+            const itemContent = match[1];
+
+            // Helper to extract tag content
+            const extract = (tag: string) => {
+                const regex = new RegExp(`<${tag}.*?>([\\s\\S]*?)<\\/${tag}>`);
+                const result = regex.exec(itemContent);
+                if (!result) return '';
+                let text = result[1];
+                // Remove CDATA wrap if present
+                text = text.replace(/^<!\[CDATA\[(.*)\]\]>$/, '$1');
+                return text.trim();
+            };
+
+            const title = extract('title');
+            const link = extract('link');
+            const pubDate = extract('pubDate');
+            const contentEncoded = extract('content:encoded');
+            const description = extract('description');
+
+            // Simple cleanup of content/excerpt
+            const cleanContent = contentEncoded || description;
+            const cleanExcerpt = description.replace(/<[^>]+>/g, '').substring(0, 150) + '...';
+
+            events.push({
+                id: link, // Use link as unique ID
+                title,
+                link,
+                date: new Date(pubDate).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                }),
+                content: cleanContent,
+                excerpt: cleanExcerpt
+            });
+        }
+
+        return events;
+
+    } catch (error) {
+        console.error('Error parsing events RSS:', error);
+        return [];
+    }
+}

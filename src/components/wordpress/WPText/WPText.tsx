@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { useWPData } from '../useWPData';
+import type { WP_Page } from '@/types/wordpress';
 
 type AllowedTags = 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span' | 'div' | 'a';
 
@@ -29,7 +30,7 @@ export default function WPText({
     className = '',
     href
 }: WPTextProps) {
-    const { data, loading, error } = useWPData({
+    const { data, loading, error } = useWPData<WP_Page>({
         slug,
         field,
         enabled: !isStatic
@@ -53,7 +54,7 @@ export default function WPText({
         } else {
             // Fallback: render nothing if specific tag not found in content
             // OR render whole content? Let's render nothing for precision filtering
-            displayContent = null;
+            displayContent = undefined;
         }
     }
 
