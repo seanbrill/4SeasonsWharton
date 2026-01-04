@@ -7,7 +7,10 @@
     "build": "rm -rf .next && next build",
     "serve": "npm run build && npx serve out",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "deploy": "bash ./scripts/deploy.sh",
+    "deploy:rollback": "bash ./scripts/rollback.sh",
+    "ssh": "./scripts/ssh-connect.sh"
   },
   "dependencies": {
     "next": "16.1.1",

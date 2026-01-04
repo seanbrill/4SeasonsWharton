@@ -35,7 +35,7 @@ export default async function Home() {
         {main_gallery ? (
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-16">
-              <h1 className="text-5xl md:text-6xl font-serif font-bold text-gray-900 mb-6">4Seasons Mediterranean</h1>
+              <h1 className="text-5xl md:text-6xl font-serif font-bold text-gray-900 mb-6">4 Seasons Mediterranean</h1>
               <div className="w-24 h-1 bg-amber-600 mx-auto rounded-full"></div>
             </div>
 
