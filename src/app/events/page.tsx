@@ -20,21 +20,27 @@ export default async function Page() {
     return (
         <div className="min-h-screen bg-stone-50">
             {/* Header */}
-            <div className="pt-24 pb-12 text-center">
-                <WPText
-                    slug={SLUG}
-                    field="title.rendered"
-                    tag="h1"
-                    staticData={page?.title?.rendered || 'Events'}
-                    className="text-5xl font-serif font-bold text-stone-900 capitalize mb-4"
-                />
-
-                {hasPageContent && (
-                    <div className="max-w-2xl mx-auto px-4 prose prose-stone">
-                        <WPContent content={page.content.rendered} slug={SLUG} />
-                    </div>
-                )}
-                <div className="w-24 h-1 bg-amber-600 mx-auto rounded-full mt-8"></div>
+            <div className="pt-24 pb-6 text-center">
+                <div className="container mx-auto px-4">
+                    <WPText
+                        slug={SLUG}
+                        field="title.rendered"
+                        tag="h1"
+                        staticData={page?.title?.rendered || 'Events'}
+                        className="text-5xl font-serif font-bold text-stone-900 mb-6 capitalize"
+                    />
+                    <div className="w-24 h-1 bg-amber-600 mx-auto rounded-full mb-6"></div>
+                    {hasPageContent && (
+                        <div className="max-w-2xl mx-auto prose prose-stone">
+                            <WPContent content={page.content.rendered} slug={SLUG} />
+                        </div>
+                    )}
+                    {!hasPageContent && (
+                        <p className="text-xl text-stone-600 max-w-2xl mx-auto">
+                            Host your next event with us!
+                        </p>
+                    )}
+                </div>
             </div>
 
             <div className="container mx-auto px-4 py-8 pb-24">

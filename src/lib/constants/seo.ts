@@ -35,4 +35,4 @@ export const BUSINESS_INFO = {
 } as const;
 
 // Default OG Image (should be created/uploaded)
-export const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.jpg`;
+export const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.png`;

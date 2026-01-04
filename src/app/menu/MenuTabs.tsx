@@ -5,8 +5,8 @@ import WPContent from '@/components/wordpress/WPContent/WPContent';
 import WPText from '@/components/wordpress/WPText/WPText';
 
 const TABS = [
-    { id: 'lunch', label: 'Lunch', slug: 'menu' },
-    { id: 'dinner', label: 'Dinner', slug: 'dinner' },
+    { id: 'lunch', label: 'Lunch', slug: 'lunch-menu' },
+    { id: 'dinner', label: 'Dinner', slug: 'dinner-menu' },
     { id: 'kids', label: 'Kids Menu', slug: 'kids-menu' },
     { id: 'dessert', label: 'Dessert', slug: 'dessert-menu' },
 ];
@@ -44,8 +44,8 @@ export default function MenuTabs() {
                         onClick={() => setActiveTab(tab)}
                         onKeyDown={(e) => handleKeyDown(e, index)}
                         className={`px-6 py-3 rounded-full text-lg font-medium transition-all duration-300 ${activeTab.id === tab.id
-                                ? 'bg-amber-600 text-white shadow-lg scale-105'
-                                : 'bg-white text-stone-600 hover:bg-stone-100 hover:text-stone-900 border border-stone-200'
+                            ? 'bg-amber-600 text-white shadow-lg scale-105'
+                            : 'bg-white text-stone-600 hover:bg-stone-100 hover:text-stone-900 border border-stone-200'
                             }`}
                         role="tab"
                         aria-selected={activeTab.id === tab.id}
@@ -74,7 +74,7 @@ export default function MenuTabs() {
                                 slug={tab.slug}
                                 field="title.rendered"
                                 tag="h2"
-                                staticData={`${tab.label} Menu`}
+                                staticData={tab.label}
                                 className="text-3xl font-serif font-bold text-stone-800"
                             />
                         </div>

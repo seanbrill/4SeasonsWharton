@@ -3,7 +3,7 @@ import { siteConfig } from "@/config/site";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Home | 4 Seasons Wharton",
+  title: "4 Seasons Mediterranean",
   description: "Welcome to 4 Seasons Wharton.",
 };
 

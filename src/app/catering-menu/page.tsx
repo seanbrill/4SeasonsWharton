@@ -17,17 +17,17 @@ export default async function Page() {
     return (
         <div className="min-h-screen bg-stone-50">
             {/* Hero Section */}
-            <div className="pt-24 pb-12 text-center relative z-10">
+            <div className="pt-24 pb-6 text-center relative z-10">
                 <div className="container mx-auto px-4">
                     <WPText
                         slug={SLUG}
                         field="title.rendered"
                         tag="h1"
                         staticData={page?.title?.rendered || 'Catering Services'}
-                        className="text-5xl md:text-6xl font-serif font-bold text-stone-900 mb-6 capitalize"
+                        className="text-5xl font-serif font-bold text-stone-900 mb-6 capitalize"
                     />
                     <div className="w-24 h-1 bg-amber-600 mx-auto rounded-full mb-6"></div>
-                    <p className="text-xl md:text-2xl text-stone-600 max-w-2xl mx-auto">
+                    <p className="text-xl text-stone-600 max-w-2xl mx-auto">
                         Exceptional cuisine for your most memorable occasions.
                     </p>
                 </div>
