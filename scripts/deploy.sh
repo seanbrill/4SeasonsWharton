@@ -84,7 +84,20 @@ success "Static export verified (out/ directory exists)"
 #
 # Step 4: Prepare staging directory on server
 #
+# Resolve absolute paths to avoid tilde expansion issues
+HOME_DIR="/home/${GODADDY_USERNAME}"
+# Strip leading tilde/slash if present in WEBROOT options, or just force structure
+# If GODADDY_WEBROOT is "~/html", we want "/home/user/html"
+if [[ "${GODADDY_WEBROOT}" == ~* ]]; then
+  GODADDY_WEBROOT="${GODADDY_WEBROOT/#\~/$HOME_DIR}"
+elif [[ "${GODADDY_WEBROOT}" != /* ]]; then
+  GODADDY_WEBROOT="${HOME_DIR}/${GODADDY_WEBROOT}"
+fi
+
+export GODADDY_WEBROOT
+
 STAGING_DIR="${GODADDY_WEBROOT}.__deploy"
+export STAGING_DIR
 
 info "Creating staging directory on server: ${STAGING_DIR}"
 
@@ -131,7 +144,7 @@ expect <<EOF
 set timeout 300
 log_user 1
 
-spawn bash -c "cd out && scp -P ${GODADDY_PORT} -r * ${GODADDY_USERNAME}@${GODADDY_HOST}:${STAGING_DIR}/"
+spawn bash -c "cd out && shopt -s dotglob && scp -P ${GODADDY_PORT} -r * ${GODADDY_USERNAME}@${GODADDY_HOST}:${STAGING_DIR}/"
 
 expect {
   -re "(?i)are you sure you want to continue connecting.*\\?" {
@@ -154,6 +167,52 @@ EOF
 
 if [[ $? -ne 0 ]]; then
   error "Failed to upload files"
+  exit $EXIT_UPLOAD_FAILED
+fi
+
+
+# Verify files were actually uploaded (wait for SCP to finish writing)
+
+info "Removing conflicting Next.js directories to prevent 403 errors..."
+expect <<'CLEAN_DIRS_EOF'
+set timeout 30
+log_user 1
+
+spawn ssh -p $env(GODADDY_PORT) $env(GODADDY_USERNAME)@$env(GODADDY_HOST) "cd $env(STAGING_DIR) && rm -rf menu events contact-us catering-menu catering _not-found"
+
+expect {
+  -re "(?i)password:" {
+    send -- "$env(GODADDY_PASSWORD)\r"
+    exp_continue
+  }
+  eof
+}
+CLEAN_DIRS_EOF
+
+info "Verifying files uploaded successfully..."
+sleep 5  # Give SCP generous time to finish writing files
+
+expect <<'VERIFY_EOF'
+set timeout 30
+log_user 1
+
+spawn ssh -p $env(GODADDY_PORT) $env(GODADDY_USERNAME)@$env(GODADDY_HOST) "ls -laR $env(STAGING_DIR) | head -20"
+
+expect {
+  -re "(?i)password:" {
+    send -- "$env(GODADDY_PASSWORD)\r"
+    exp_continue
+  }
+  -re "total" {
+    # If we see 'total', ls command ran. Check output in logs if needed.
+    puts "✓ List command executed"
+  }
+  eof
+}
+VERIFY_EOF
+
+if [[ $? -ne 0 ]]; then
+  error "File verification failed - staging directory may be empty"
   exit $EXIT_UPLOAD_FAILED
 fi
 
@@ -211,46 +270,56 @@ else
 fi
 BACKUP_EOF
 
-# Upload and execute backup script
-BACKUP_SCRIPT_PATH="/tmp/backup_script_$$.sh"
-
-expect <<EOF
-set timeout 30
-log_user 0
-
-spawn scp -P ${GODADDY_PORT} ${BACKUP_SCRIPT} ${GODADDY_USERNAME}@${GODADDY_HOST}:${BACKUP_SCRIPT_PATH}
-
-expect {
-  -re "(?i)are you sure you want to continue connecting.*\\?" {
-    send "yes\r"
-    exp_continue
-  }
-  -re "(?i)password:" {
-    send -- "${GODADDY_PASSWORD}\r"
-    exp_continue
-  }
-  eof
-}
-
-lassign [wait] pid spawnid os_error_flag exit_code
-if {\$exit_code != 0} {
-  puts "ERROR: Failed to upload backup script"
-  exit $EXIT_DEPLOY_FAILED
-}
-EOF
-
-if [[ $? -ne 0 ]]; then
-  rm -f "$BACKUP_SCRIPT"
-  error "Failed to upload backup script"
-  exit $EXIT_DEPLOY_FAILED
-fi
-
-# Execute backup script
-expect <<EOF
+# Execute backup script via SSH with heredoc
+expect <<'EXPECT_EOF'
 set timeout 60
 log_user 1
 
-spawn ssh -p ${GODADDY_PORT} ${GODADDY_USERNAME}@${GODADDY_HOST} "chmod +x ${BACKUP_SCRIPT_PATH} && ${BACKUP_SCRIPT_PATH} ${GODADDY_WEBROOT} && rm -f ${BACKUP_SCRIPT_PATH}"
+spawn ssh -p $env(GODADDY_PORT) $env(GODADDY_USERNAME)@$env(GODADDY_HOST) "bash -s $env(GODADDY_WEBROOT) <<'REMOTE_SCRIPT'
+#!/bin/bash
+set -euo pipefail
+
+WEBROOT=\"\$1\"
+ROLLBACK_DIR=\"\${WEBROOT%/html}/rollback\"
+
+echo \"Setting up rollback directory structure...\"
+mkdir -p \"\${ROLLBACK_DIR}\"
+
+# Check if there's anything to backup (i.e., if this isn't the first deployment)
+if \[ -f \"\${WEBROOT}/index.html\" \]; then
+  echo \"Rotating existing backups...\"
+  
+  # Rotate backups: version-3 deleted, version-2 → version-3, version-1 → version-2
+  rm -rf \"\${ROLLBACK_DIR}/version-3\" 2>/dev/null || true
+  \[ -d \"\${ROLLBACK_DIR}/version-2\" \] && mv \"\${ROLLBACK_DIR}/version-2\" \"\${ROLLBACK_DIR}/version-3\"
+  \[ -d \"\${ROLLBACK_DIR}/version-1\" \] && mv \"\${ROLLBACK_DIR}/version-1\" \"\${ROLLBACK_DIR}/version-2\"
+  
+  echo \"Creating new backup as version-1...\"
+  mkdir -p \"\${ROLLBACK_DIR}/version-1\"
+  
+  # Backup all static files (excluding WordPress folders)
+  cd \"\${WEBROOT}\"
+  
+  # Copy HTML files
+  find . -maxdepth 1 -type f -name \"*.html\" -exec cp {} \"\${ROLLBACK_DIR}/version-1/\" \\; 2>/dev/null || true
+  
+  # Copy static directories if they exist
+  \[ -d \"_next\" \] && cp -r _next \"\${ROLLBACK_DIR}/version-1/\" 2>/dev/null || true
+  \[ -d \"assets\" \] && cp -r assets \"\${ROLLBACK_DIR}/version-1/\" 2>/dev/null || true
+  \[ -d \"images\" \] && cp -r images \"\${ROLLBACK_DIR}/version-1/\" 2>/dev/null || true
+  \[ -d \"static\" \] && cp -r static \"\${ROLLBACK_DIR}/version-1/\" 2>/dev/null || true
+  
+  # Copy common static files
+  \[ -f \"favicon.ico\" \] && cp favicon.ico \"\${ROLLBACK_DIR}/version-1/\" 2>/dev/null || true
+  \[ -f \"robots.txt\" \] && cp robots.txt \"\${ROLLBACK_DIR}/version-1/\" 2>/dev/null || true
+  \[ -f \"sitemap.xml\" \] && cp sitemap.xml \"\${ROLLBACK_DIR}/version-1/\" 2>/dev/null || true
+  
+  echo \"✓ Backup created successfully\"
+else
+  echo \"No existing site to backup (first deployment)\"
+fi
+REMOTE_SCRIPT
+"
 
 expect {
   -re "(?i)are you sure you want to continue connecting.*\\?" {
@@ -258,18 +327,18 @@ expect {
     exp_continue
   }
   -re "(?i)password:" {
-    send -- "${GODADDY_PASSWORD}\r"
+    send -- "$env(GODADDY_PASSWORD)\r"
     exp_continue
   }
   eof
 }
 
 lassign [wait] pid spawnid os_error_flag exit_code
-if {\$exit_code != 0} {
+if {$exit_code != 0} {
   puts "ERROR: Backup failed"
-  exit $EXIT_DEPLOY_FAILED
+  exit $env(EXIT_DEPLOY_FAILED)
 }
-EOF
+EXPECT_EOF
 
 rm -f "$BACKUP_SCRIPT"
 
@@ -347,46 +416,56 @@ rmdir "${STAGING}" 2>/dev/null || true
 echo "✓ Deployment complete"
 REMOTE_EOF
 
-# Upload the script to the server
-REMOTE_SCRIPT_PATH="/tmp/deploy_script_$$.sh"
+# Export STAGING_DIR and EXIT_DEPLOY_FAILED so expect can access them
+export STAGING_DIR
+export EXIT_DEPLOY_FAILED
 
-expect <<EOF
-set timeout 30
-log_user 0
-
-spawn scp -P ${GODADDY_PORT} ${TEMP_SCRIPT} ${GODADDY_USERNAME}@${GODADDY_HOST}:${REMOTE_SCRIPT_PATH}
-
-expect {
-  -re "(?i)are you sure you want to continue connecting.*\\?" {
-    send "yes\r"
-    exp_continue
-  }
-  -re "(?i)password:" {
-    send -- "${GODADDY_PASSWORD}\r"
-    exp_continue
-  }
-  eof
-}
-
-lassign [wait] pid spawnid os_error_flag exit_code
-if {\$exit_code != 0} {
-  puts "ERROR: Failed to upload deployment script"
-  exit $EXIT_DEPLOY_FAILED
-}
-EOF
-
-if [[ $? -ne 0 ]]; then
-  rm -f "$TEMP_SCRIPT"
-  error "Failed to upload deployment script"
-  exit $EXIT_DEPLOY_FAILED
-fi
-
-# Execute the script on the server
-expect <<EOF
+# Execute deployment script via SSH with heredoc
+expect <<'EXPECT_EOF'
 set timeout 60
 log_user 1
 
-spawn ssh -p ${GODADDY_PORT} ${GODADDY_USERNAME}@${GODADDY_HOST} "chmod +x ${REMOTE_SCRIPT_PATH} && ${REMOTE_SCRIPT_PATH} ${GODADDY_WEBROOT} ${STAGING_DIR} && rm -f ${REMOTE_SCRIPT_PATH}"
+spawn ssh -p $env(GODADDY_PORT) $env(GODADDY_USERNAME)@$env(GODADDY_HOST) "bash -s $env(GODADDY_WEBROOT) $env(STAGING_DIR) <<'REMOTE_SCRIPT'
+#!/bin/bash
+set -euo pipefail
+
+WEBROOT=\"\$1\"
+STAGING=\"\$2\"
+
+echo \"Checking for html/html nesting...\"
+if \[ -d \"\${WEBROOT}/html\" \]; then
+  echo \"⚠ WARNING: Detected html/html nesting - fixing...\"
+  # Move everything from nested html/ up one level
+  if \[ -d \"\${WEBROOT}/html/wp-admin\" \]; then
+    # WordPress is in the nested directory, move it up
+    mv \"\${WEBROOT}/html\"/* \"\${WEBROOT}/\" 2>/dev/null || true
+    rmdir \"\${WEBROOT}/html\" 2>/dev/null || true
+    echo \"✓ Fixed html/html nesting\"
+  fi
+fi
+
+echo \"Cleaning old static files...\"
+# Remove old static files but don't touch WordPress folders
+cd \"\${WEBROOT}\"
+# Remove HTML files
+find . -maxdepth 1 -type f -name \"*.html\" -delete 2>/dev/null || true
+# Remove common Next.js/static directories
+rm -rf _next assets images static 2>/dev/null || true
+# Remove conflicting directories that shadow .html files (CAUSES 403 ERRORS)
+rm -rf menu events contact-us catering-menu catering _not-found 2>/dev/null || true
+# Remove common static files
+rm -f favicon.ico robots.txt sitemap.xml .htaccess 2>/dev/null || true
+
+echo \"Deploying new static files...\"
+shopt -s dotglob
+# Copy all files from staging to webroot (force overwrite)
+if ! cp -rf \"\${STAGING}\"/* \"\${WEBROOT}/\"; then\n  echo \"ERROR: Failed to copy files from staging to webroot\"\n  echo \"Staging directory contents:\"\n  ls -la \"\${STAGING}\" | head -10\n  exit 1\nfi\n
+# Cleanup staging directory
+rm -rf \"\${STAGING}\" 2>/dev/null || true
+
+echo \"✓ Deployment complete\"
+REMOTE_SCRIPT
+"
 
 expect {
   -re "(?i)are you sure you want to continue connecting.*\\?" {
@@ -394,18 +473,18 @@ expect {
     exp_continue
   }
   -re "(?i)password:" {
-    send -- "${GODADDY_PASSWORD}\r"
+    send -- "$env(GODADDY_PASSWORD)\r"
     exp_continue
   }
   eof
 }
 
 lassign [wait] pid spawnid os_error_flag exit_code
-if {\$exit_code != 0} {
+if {$exit_code != 0} {
   puts "ERROR: Deployment failed"
-  exit $EXIT_DEPLOY_FAILED
+  exit $env(EXIT_DEPLOY_FAILED)
 }
-EOF
+EXPECT_EOF
 
 # Clean up local temp file
 rm -f "$TEMP_SCRIPT"

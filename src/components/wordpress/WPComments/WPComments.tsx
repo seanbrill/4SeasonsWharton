@@ -34,7 +34,8 @@ const WPComments: React.FC<WPCommentsProps> = ({ postId }) => {
         const fetchComments = async () => {
             try {
                 // Now that `show_in_rest` is enabled, we can use the proper API!
-                const res = await fetch(`https://4seasonswharton.com/wp-json/wp/v2/comments?post=${postId}`);
+                // Use robust URL pattern to bypass rewrite rules
+                const res = await fetch(`https://4seasonswharton.com/index.php?rest_route=/wp/v2/comments&post=${postId}`);
                 if (!res.ok) throw new Error('Failed to fetch comments');
                 const data = await res.json();
                 setComments(data);
@@ -55,7 +56,8 @@ const WPComments: React.FC<WPCommentsProps> = ({ postId }) => {
         setSubmitStatus('idle');
 
         try {
-            const res = await fetch('https://4seasonswharton.com/wp-json/wp/v2/comments', {
+            // Use robust URL pattern for POST as well
+            const res = await fetch('https://4seasonswharton.com/index.php?rest_route=/wp/v2/comments', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

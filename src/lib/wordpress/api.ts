@@ -5,12 +5,27 @@ import { WP_Page, WP_Post } from './types';
 async function fetchAPI(endpoint: string) {
     try {
         const headers = { 'Content-Type': 'application/json' };
-        const res = await fetch(`${WORDPRESS_API_URL}${endpoint}`, {
+
+        // Robust API URL construction:
+        // 1. Clean base URL (remove /wp-json if present)
+        const baseUrl = WORDPRESS_API_URL.replace(/\/wp-json\/?$/, '');
+
+        // 2. Ensure endpoint starts with /
+        const fullEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
+
+        // 3. Split path and query params to avoid double '?'
+        const [path, query] = fullEndpoint.split('?');
+
+        // 4. Construct URL using index.php?rest_route= pattern
+        // If there was a query string, append it with '&' instead of '?'
+        const apiUrl = `${baseUrl}/index.php?rest_route=${path}${query ? `&${query}` : ''}`;
+
+        const res = await fetch(apiUrl, {
             headers,
         });
 
         if (!res.ok) {
-            console.warn(`Failed to fetch API: ${WORDPRESS_API_URL}${endpoint} (${res.status})`);
+            console.warn(`Failed to fetch API: ${apiUrl} (${res.status})`);
             return null;
         }
 

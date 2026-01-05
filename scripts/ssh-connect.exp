@@ -1,0 +1,53 @@
+#!/usr/bin/expect -f
+
+set timeout 30
+log_user 1
+
+# Get credentials from environment
+set user $env(GODADDY_USERNAME)
+set pass $env(GODADDY_PASSWORD)
+set host $env(GODADDY_HOST)
+set port $env(GODADDY_PORT)
+
+# Start SSH with forced TTY
+spawn ssh -t -p $port $user@$host
+
+# Handle password prompt
+expect {
+  -re "(?i)are you sure you want to continue connecting.*\\?" {
+    send "yes\r"
+    exp_continue
+  }
+  -re "(?i)password:" {
+    send -- "$pass\r"
+  }
+  -re "(?i)permission denied" {
+    puts "ERROR: Permission denied"
+    exit 2
+  }
+  timeout {
+    puts "ERROR: Timeout waiting for password prompt"
+    exit 3
+  }
+  eof {
+    puts "ERROR: Connection closed before login"
+    exit 4
+  }
+}
+
+# Wait for any output after login
+expect {
+  -re ".+" {
+    # Got output, connection is alive
+  }
+  timeout {
+    # Timeout is okay
+  }
+  eof {
+    puts "ERROR: Connection closed after login"
+    exit 5
+  }
+}
+
+# Hand over control to user
+interact

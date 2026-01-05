@@ -29,7 +29,13 @@ const WPEvents: React.FC = () => {
             try {
                 // Switch to direct REST API to avoid RSS caching issues
                 // Includes _embed to get featured media (images)
-                const res = await fetch('https://4seasonswharton.com/wp-json/wp/v2/themo_event?_embed', {
+
+                // Construct robust URL (stripping /wp-json from base if needed)
+                // We access process.env.NEXT_PUBLIC_WORDPRESS_API_URL directly or hardcode fallback because constant import might be cleaner
+                // But simplified:
+                const API_BASE = 'https://4seasonswharton.com';
+
+                const res = await fetch(`${API_BASE}/index.php?rest_route=/wp/v2/themo_event&_embed`, {
                     cache: 'no-store' // Ensure fresh data on client
                 });
                 if (!res.ok) throw new Error('Failed to fetch');

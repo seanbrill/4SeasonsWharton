@@ -12,6 +12,8 @@ const TABS = [
 ];
 
 export default function MenuTabs() {
+    console.log('MenuTabs loaded. TABS:', JSON.stringify(TABS));
+
     const [activeTab, setActiveTab] = useState(TABS[0]);
 
     // Handle keyboard navigation (Arrow keys)

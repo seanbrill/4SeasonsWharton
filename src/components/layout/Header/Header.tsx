@@ -16,7 +16,7 @@ export default function Header() {
     const navLinks = [
         { href: '/', label: 'Home' },
         { href: '/menu', label: 'Menu' },
-        { href: '/catering-menu', label: 'Catering' },
+        { href: '/catering', label: 'Catering' },
         { href: '/events', label: 'Events' },
         { href: '/contact-us', label: 'Contact' },
     ];
@@ -44,8 +44,8 @@ export default function Header() {
                                 <Link
                                     href={link.href}
                                     className={`px-3 py-2 rounded-lg transition-colors duration-200 ${isActive(link.href)
-                                            ? 'text-amber-600 bg-amber-50'
-                                            : 'text-stone-600 hover:text-stone-900 hover:bg-stone-50'
+                                        ? 'text-amber-600 bg-amber-50'
+                                        : 'text-stone-600 hover:text-stone-900 hover:bg-stone-50'
                                         }`}
                                     aria-current={isActive(link.href) ? 'page' : undefined}
                                 >

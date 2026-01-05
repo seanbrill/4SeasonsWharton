@@ -1,0 +1,46 @@
+# BEGIN WordPress and Static Site
+<IfModule mod_headers.c>
+    # Disable Etags
+    Header unset ETag
+    FileETag None
+
+    # Force revalidation for all content (Aggressive Cache Busting)
+    Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires "Wed, 11 Jan 1984 05:00:00 GMT"
+</IfModule>
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+Options +FollowSymLinks -MultiViews -Indexes
+
+# FORCE UPDATE: 2026-01-05 v3
+
+# 1. Passthrough for WordPress Core & API
+# Prioritize these to ensure WordPress administration and API always work
+RewriteRule ^index\.php$ - [L]
+RewriteRule ^wp-admin - [L]
+RewriteRule ^wp-content - [L]
+RewriteRule ^wp-includes - [L]
+RewriteRule ^wp-login\.php - [L]
+RewriteRule ^wp-json - [L]
+
+# 2. Clean URLs (Extensionless -> .html)
+# If request is not a directory, and the .html version exists, serve it
+RewriteCond %{REQUEST_URI} !^/wp-json/
+RewriteCond %{REQUEST_URI} !^/wp-admin/
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*)$ $1.html [L]
+
+# 3. Root Handling
+RewriteRule ^$ index.html [L]
+
+# 4. WordPress Fallback (Front Controller)
+# If file/dir doesn't exist, hand off to WordPress
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+# END WordPress and Static Site

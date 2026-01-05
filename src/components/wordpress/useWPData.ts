@@ -44,8 +44,16 @@ export function useWPData<T = unknown>(props: UseWPDataProps): UseWPDataResult<T
 
             try {
                 // Fetch the page by slug with cache-busting timestamp
+                // Fetch the page by slug using robust "plain" permalink structure
+                // This bypasses server rewrite rule conflicts with /wp-json/
+                // Clean base URL to remove potential /wp-json suffix if present
+                const baseUrl = WORDPRESS_API_URL.replace(/\/wp-json\/?$/, '');
+
+                // Construct robust API URL using index.php?rest_route=
+                const apiUrl = `${baseUrl}/index.php?rest_route=/`;
+
                 const res = await fetch(
-                    `${WORDPRESS_API_URL}/wp/v2/pages?slug=${slug}&_embed&t=${Date.now()}`,
+                    `${apiUrl}wp/v2/pages&slug=${slug}&_embed&t=${Date.now()}`,
                     {
                         headers: {
                             'Content-Type': 'application/json',
