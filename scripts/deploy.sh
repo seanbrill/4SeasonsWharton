@@ -375,7 +375,7 @@ if [[ -d "${WEBROOT}/html" ]]; then
   fi
 fi
 
-echo "Preserving WordPress directories..."
+echo "Preserving WordPress directories and configuration..."
 # Create temp directory for WordPress folders
 WP_TEMP="${WEBROOT}.__wp_backup"
 mkdir -p "${WP_TEMP}"
@@ -387,6 +387,12 @@ for wp_dir in wp-admin wp-content wp-includes; do
     mv "${WEBROOT}/${wp_dir}" "${WP_TEMP}/"
   fi
 done
+
+# Backup .htaccess file if it exists (needed for WordPress REST API)
+if [[ -f "${WEBROOT}/.htaccess" ]]; then
+  echo "  Backing up .htaccess..."
+  mv "${WEBROOT}/.htaccess" "${WP_TEMP}/"
+fi
 
 echo "Cleaning old static files..."
 # Remove old static files but preserve WordPress
@@ -400,7 +406,7 @@ echo "Moving staged files to production..."
 # Move all files from staging to webroot
 mv "${STAGING}"/* "${WEBROOT}/" 2>/dev/null || true
 
-echo "Restoring WordPress directories..."
+echo "Restoring WordPress directories and configuration..."
 # Restore WordPress folders
 for wp_dir in wp-admin wp-content wp-includes; do
   if [[ -d "${WP_TEMP}/${wp_dir}" ]]; then
@@ -408,6 +414,29 @@ for wp_dir in wp-admin wp-content wp-includes; do
     mv "${WP_TEMP}/${wp_dir}" "${WEBROOT}/"
   fi
 done
+
+# Restore .htaccess file if it was backed up
+if [[ -f "${WP_TEMP}/.htaccess" ]]; then
+  echo "  Restoring .htaccess..."
+  mv "${WP_TEMP}/.htaccess" "${WEBROOT}/"
+else
+  # If no .htaccess exists, create a default WordPress one for REST API support
+  echo "  Creating default WordPress .htaccess for REST API support..."
+  cat > "${WEBROOT}/.htaccess" << 'HTACCESS_EOF'
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+# END WordPress
+HTACCESS_EOF
+  chmod 644 "${WEBROOT}/.htaccess"
+fi
 
 # Cleanup
 rmdir "${WP_TEMP}" 2>/dev/null || true
@@ -444,6 +473,14 @@ if \[ -d \"\${WEBROOT}/html\" \]; then
   fi
 fi
 
+echo \"Backing up WordPress .htaccess if it exists...\"
+WP_TEMP=\"\${WEBROOT}.__wp_backup\"
+mkdir -p \"\${WP_TEMP}\"
+if \[ -f \"\${WEBROOT}/.htaccess\" \]; then
+  echo \"  Preserving .htaccess...\"
+  cp \"\${WEBROOT}/.htaccess\" \"\${WP_TEMP}/.htaccess\"
+fi
+
 echo \"Cleaning old static files...\"
 # Remove old static files but don't touch WordPress folders
 cd \"\${WEBROOT}\"
@@ -453,8 +490,8 @@ find . -maxdepth 1 -type f -name \"*.html\" -delete 2>/dev/null || true
 rm -rf _next assets images static 2>/dev/null || true
 # Remove conflicting directories that shadow .html files (CAUSES 403 ERRORS)
 rm -rf menu events contact-us catering-menu catering _not-found 2>/dev/null || true
-# Remove common static files
-rm -f favicon.ico robots.txt sitemap.xml .htaccess 2>/dev/null || true
+# Remove common static files (but preserve WordPress .htaccess for REST API)
+rm -f favicon.ico robots.txt sitemap.xml 2>/dev/null || true
 
 echo \"Deploying new static files...\"
 shopt -s dotglob
@@ -462,6 +499,38 @@ shopt -s dotglob
 if ! cp -rf \"\${STAGING}\"/* \"\${WEBROOT}/\"; then\n  echo \"ERROR: Failed to copy files from staging to webroot\"\n  echo \"Staging directory contents:\"\n  ls -la \"\${STAGING}\" | head -10\n  exit 1\nfi\n
 # Cleanup staging directory
 rm -rf \"\${STAGING}\" 2>/dev/null || true
+
+echo \"Creating .htaccess for Next.js static site + WordPress...\"
+cat > \"\${WEBROOT}/.htaccess\" << 'HTACCESS_END'
+# BEGIN WordPress and Static Site
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteBase /
+
+# Serve root as static index.html (Next.js homepage)
+RewriteRule ^$ index.html [L]
+
+# Serve static Next.js pages (extensionless URLs -> .html files)
+# But exclude WordPress paths
+RewriteCond %{REQUEST_URI} !^/wp-
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*)$ $1.html [L]
+
+# WordPress: If physical file or directory exists, serve it directly
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# WordPress: Route everything else through index.php
+# This includes REST API (/wp-json/*) and other WordPress virtual URLs
+RewriteRule ^ index.php [L]
+</IfModule>
+# END WordPress and Static Site
+HTACCESS_END
+chmod 644 \"\${WEBROOT}/.htaccess\"
+echo \"✓ .htaccess created successfully\"
+rmdir \"\${WP_TEMP}\" 2>/dev/null || true
 
 echo \"✓ Deployment complete\"
 REMOTE_SCRIPT
