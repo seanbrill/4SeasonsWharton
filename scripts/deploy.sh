@@ -82,6 +82,15 @@ fi
 success "Static export verified (out/ directory exists)"
 
 #
+# Step 3.5: Remove conflicting Next.js directories from out/
+#
+info "Removing conflicting Next.js route directories from out/..."
+# These directories contain RSC payloads that conflict with .html files
+# causing Apache to serve directory contents instead of the .html files
+rm -rf out/menu out/events out/contact-us out/catering out/_not-found 2>/dev/null || true
+success "Conflicting directories removed from out/"
+
+#
 # Step 4: Prepare staging directory on server
 #
 # Resolve absolute paths to avoid tilde expansion issues
@@ -172,22 +181,6 @@ fi
 
 
 # Verify files were actually uploaded (wait for SCP to finish writing)
-
-info "Removing conflicting Next.js directories to prevent 403 errors..."
-expect <<'CLEAN_DIRS_EOF'
-set timeout 30
-log_user 1
-
-spawn ssh -p $env(GODADDY_PORT) $env(GODADDY_USERNAME)@$env(GODADDY_HOST) "cd $env(STAGING_DIR) && rm -rf menu events contact-us catering-menu catering _not-found"
-
-expect {
-  -re "(?i)password:" {
-    send -- "$env(GODADDY_PASSWORD)\r"
-    exp_continue
-  }
-  eof
-}
-CLEAN_DIRS_EOF
 
 info "Verifying files uploaded successfully..."
 sleep 5  # Give SCP generous time to finish writing files
@@ -488,48 +481,22 @@ cd \"\${WEBROOT}\"
 find . -maxdepth 1 -type f -name \"*.html\" -delete 2>/dev/null || true
 # Remove common Next.js/static directories
 rm -rf _next assets images static 2>/dev/null || true
-# Remove conflicting directories that shadow .html files (CAUSES 403 ERRORS)
-rm -rf menu events contact-us catering-menu catering _not-found 2>/dev/null || true
 # Remove common static files (but preserve WordPress .htaccess for REST API)
 rm -f favicon.ico robots.txt sitemap.xml 2>/dev/null || true
 
 echo \"Deploying new static files...\"
 shopt -s dotglob
 # Copy all files from staging to webroot (force overwrite)
-if ! cp -rf \"\${STAGING}\"/* \"\${WEBROOT}/\"; then\n  echo \"ERROR: Failed to copy files from staging to webroot\"\n  echo \"Staging directory contents:\"\n  ls -la \"\${STAGING}\" | head -10\n  exit 1\nfi\n
+if ! cp -rf \"\${STAGING}\"/* \"\${WEBROOT}/\"; then
+  echo \"ERROR: Failed to copy files from staging to webroot\"
+  echo \"Staging directory contents:\"
+  ls -la \"\${STAGING}\" | head -10
+  exit 1
+fi
 # Cleanup staging directory
 rm -rf \"\${STAGING}\" 2>/dev/null || true
 
-echo \"Creating .htaccess for Next.js static site + WordPress...\"
-cat > \"\${WEBROOT}/.htaccess\" << 'HTACCESS_END'
-# BEGIN WordPress and Static Site
-<IfModule mod_rewrite.c>
-RewriteEngine On
-RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
-RewriteBase /
-
-# Serve root as static index.html (Next.js homepage)
-RewriteRule ^$ index.html [L]
-
-# Serve static Next.js pages (extensionless URLs -> .html files)
-# But exclude WordPress paths
-RewriteCond %{REQUEST_URI} !^/wp-
-RewriteCond %{REQUEST_FILENAME}.html -f
-RewriteRule ^(.*)$ $1.html [L]
-
-# WordPress: If physical file or directory exists, serve it directly
-RewriteCond %{REQUEST_FILENAME} -f [OR]
-RewriteCond %{REQUEST_FILENAME} -d
-RewriteRule ^ - [L]
-
-# WordPress: Route everything else through index.php
-# This includes REST API (/wp-json/*) and other WordPress virtual URLs
-RewriteRule ^ index.php [L]
-</IfModule>
-# END WordPress and Static Site
-HTACCESS_END
-chmod 644 \"\${WEBROOT}/.htaccess\"
-echo \"✓ .htaccess created successfully\"
+echo \"✓ Deployment files copied (includes .htaccess from out/ directory)\"
 rmdir \"\${WP_TEMP}\" 2>/dev/null || true
 
 echo \"✓ Deployment complete\"

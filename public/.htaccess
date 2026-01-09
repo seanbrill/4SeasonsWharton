@@ -1,4 +1,8 @@
 # BEGIN WordPress and Static Site
+
+# Custom Error Documents
+ErrorDocument 404 /404.html
+
 <IfModule mod_headers.c>
     # Disable Etags
     Header unset ETag
@@ -15,7 +19,7 @@ RewriteEngine On
 RewriteBase /
 Options +FollowSymLinks -MultiViews -Indexes
 
-# FORCE UPDATE: 2026-01-05 v3
+# FORCE UPDATE: 2026-01-09 v5
 
 # 1. Passthrough for WordPress Core & API
 # Prioritize these to ensure WordPress administration and API always work
@@ -24,23 +28,26 @@ RewriteRule ^wp-admin - [L]
 RewriteRule ^wp-content - [L]
 RewriteRule ^wp-includes - [L]
 RewriteRule ^wp-login\.php - [L]
-RewriteRule ^wp-json - [L]
 
-# 2. Clean URLs (Extensionless -> .html)
-# If request is not a directory, and the .html version exists, serve it
-RewriteCond %{REQUEST_URI} !^/wp-json/
-RewriteCond %{REQUEST_URI} !^/wp-admin/
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME}.html -f
-RewriteRule ^(.*)$ $1.html [L]
+# 2. WordPress API - hand off to WordPress for virtual URLs
+RewriteRule ^wp-json(/.*)?$ /index.php [L]
 
 # 3. Root Handling
 RewriteRule ^$ index.html [L]
 
-# 4. WordPress Fallback (Front Controller)
-# If file/dir doesn't exist, hand off to WordPress
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /index.php [L]
+# 4. Clean URLs (Extensionless -> .html)
+# Prioritize .html files over directories with the same name
+RewriteCond %{REQUEST_URI} !^/wp-
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*)$ $1.html [L]
+
+# 5. Static Files & Assets - serve directly if they exist
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# 6. Custom 404 Handler - serve Next.js 404 page for all other requests
+# This prevents showing the WordPress UI for invalid routes
+RewriteRule ^ /404.html [L]
 </IfModule>
 # END WordPress and Static Site

@@ -4,13 +4,23 @@ A Next.js static website for 4 Seasons Wharton Mediterranean Restaurant, deploye
 
 ## Project Overview
 
-This is a modern, statically-generated website built with Next.js 16 and deployed alongside WordPress. The site pulls dynamic content (events, menus) from WordPress via RSS feeds while maintaining fast, static page delivery.
+This is a modern, statically-generated website built with Next.js 16 and deployed alongside WordPress. The site pulls dynamic content (menus, events, gallery images) from WordPress via the REST API while maintaining fast, static page delivery.
 
 **Tech Stack:**
 - Next.js 16 (static export)
 - React 19
 - TypeScript
 - Tailwind CSS 4
+- WordPress REST API integration
+
+**Key Features:**
+- Static site generation for optimal performance
+- WordPress CMS integration for content management
+- Responsive design with mobile-optimized layouts
+- Grubhub integration for online ordering
+- Social media integration (Facebook, Instagram, TikTok)
+- Custom 404 page handling
+- Automatic deployment with rollback support
 
 ## Quick Start
 
@@ -116,9 +126,11 @@ Main deployment script that handles the complete deployment process.
 
 **Features:**
 - Builds and validates the Next.js site
+- Removes conflicting Next.js RSC payload directories
 - Uses staging directory to prevent partial deploys
 - Creates versioned backups (up to 3 versions)
 - Preserves WordPress folders
+- Deploys optimized .htaccess for clean URLs
 - Detects and fixes html/html nesting issues
 - Provides clear error messages
 
@@ -127,6 +139,7 @@ Main deployment script that handles the complete deployment process.
 - WordPress folder preservation
 - Automatic backup before deployment
 - Staging prevents broken partial deploys
+- .htaccess prioritizes .html files over directories
 
 ### rollback.sh
 
@@ -247,7 +260,25 @@ This Next.js site runs alongside WordPress on the same server:
 
 **Result:** WordPress admin remains fully functional at `https://your-domain.com/wp-admin` while the public site is served by Next.js.
 
+## Recent Updates
+
+### January 2026
+- **Routing Fix**: Resolved issue where refreshing on non-home routes showed JSON/RSC payloads instead of HTML
+- **Custom 404 Page**: Replaced WordPress fallback with branded Next.js 404 page
+- **Grubhub Integration**: Added prominent "Order Online" button with official Grubhub branding in footer
+- **Mobile UX**: Increased carousel height on mobile devices for better visibility (4:3 aspect ratio)
+- **Footer Redesign**: Enhanced footer layout with larger social icons and dedicated Grubhub section
+- **htaccess Optimization**: Updated rewrite rules to prioritize .html files over directories
+- **Cache Busting**: Implemented aggressive cache-busting headers for Cloudflare compatibility
+
 ## Troubleshooting
+
+### Page shows JSON/text instead of HTML after refresh
+
+This is usually a Cloudflare caching issue. The fix is deployed, but Cloudflare may be serving cached content:
+- Add a query parameter to bypass cache: `?cb=123`
+- Wait for Cloudflare's cache to expire naturally
+- Contact hosting provider to purge Cloudflare cache
 
 ### Deployment fails with "Missing GODADDY_* in .env.local"
 

@@ -9,5 +9,6 @@ export const siteConfig = {
         facebook: process.env.NEXT_PUBLIC_SOCIAL_FACEBOOK,
         instagram: process.env.NEXT_PUBLIC_SOCIAL_INSTAGRAM,
         tiktok: process.env.NEXT_PUBLIC_SOCIAL_TIKTOK,
+        grubhub: 'https://www.grubhub.com/restaurant/4-seasons-restaurant-322-s-main-st-wharton/4483792',
     }
 };

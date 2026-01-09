@@ -13,7 +13,7 @@ interface MobileMenuProps {
 const navLinks = [
     { href: '/', label: 'Home' },
     { href: '/menu', label: 'Menu' },
-    { href: '/catering-menu', label: 'Catering' },
+    { href: '/catering', label: 'Catering' },
     { href: '/events', label: 'Events' },
     { href: '/contact-us', label: 'Contact' },
 ];

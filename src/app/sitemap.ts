@@ -11,7 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const routes = [
         '',
         '/menu',
-        '/catering-menu',
+        '/catering',
         '/events',
         '/contact-us',
     ];

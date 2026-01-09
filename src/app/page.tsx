@@ -25,7 +25,7 @@ export default async function Home() {
           slug="home-gallery"
           isStatic={false}
           className="w-full"
-          aspectRatio="aspect-[21/9] md:aspect-[2.9/1]" // Cinematic Panoramic Ratio
+          aspectRatio="aspect-[4/3] sm:aspect-[16/9] md:aspect-[2.9/1]" // Taller on mobile, cinematic on desktop
           pageContent={main_gallery?.content?.rendered}
         />
       </section>
