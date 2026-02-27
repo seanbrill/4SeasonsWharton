@@ -1740,27 +1740,27 @@
         "type": "gallery",
         "images": [
           {
-            "url": "https://4seasonswharton.com/wp-content/uploads/2026/01/drink-2.png",
+            "url": "/wp-content/uploads/2026/01/drink-2.png",
             "alt": "Featured drink",
             "width": 768,
             "height": 1024,
-            "srcSet": "https://4seasonswharton.com/wp-content/uploads/2026/01/drink-2-768x1024.png 768w, https://4seasonswharton.com/wp-content/uploads/2026/01/drink-2-225x300.png 225w, https://4seasonswharton.com/wp-content/uploads/2026/01/drink-2-1152x1536.png 1152w, https://4seasonswharton.com/wp-content/uploads/2026/01/drink-2-1536x2048.png 1536w, https://4seasonswharton.com/wp-content/uploads/2026/01/drink-2-scaled.png 1920w",
+            "srcSet": "/wp-content/uploads/2026/01/drink-2-768x1024.png 768w, /wp-content/uploads/2026/01/drink-2-225x300.png 225w, /wp-content/uploads/2026/01/drink-2-1152x1536.png 1152w, /wp-content/uploads/2026/01/drink-2-1536x2048.png 1536w, /wp-content/uploads/2026/01/drink-2-scaled.png 1920w",
             "sizes": "auto, (max-width: 768px) 100vw, 768px"
           },
           {
-            "url": "https://4seasonswharton.com/wp-content/uploads/2026/01/food-1.png",
+            "url": "/wp-content/uploads/2026/01/food-1.png",
             "alt": "Featured pasta",
             "width": 768,
             "height": 1024,
-            "srcSet": "https://4seasonswharton.com/wp-content/uploads/2026/01/food-1-768x1024.png 768w, https://4seasonswharton.com/wp-content/uploads/2026/01/food-1-225x300.png 225w, https://4seasonswharton.com/wp-content/uploads/2026/01/food-1-1152x1536.png 1152w, https://4seasonswharton.com/wp-content/uploads/2026/01/food-1-1536x2048.png 1536w, https://4seasonswharton.com/wp-content/uploads/2026/01/food-1-scaled.png 1920w",
+            "srcSet": "/wp-content/uploads/2026/01/food-1-768x1024.png 768w, /wp-content/uploads/2026/01/food-1-225x300.png 225w, /wp-content/uploads/2026/01/food-1-1152x1536.png 1152w, /wp-content/uploads/2026/01/food-1-1536x2048.png 1536w, /wp-content/uploads/2026/01/food-1-scaled.png 1920w",
             "sizes": "auto, (max-width: 768px) 100vw, 768px"
           },
           {
-            "url": "https://4seasonswharton.com/wp-content/uploads/2026/01/dessert-1.jpg",
+            "url": "/wp-content/uploads/2026/01/dessert-1.jpg",
             "alt": "Featured dessert",
             "width": 1024,
             "height": 768,
-            "srcSet": "https://4seasonswharton.com/wp-content/uploads/2026/01/dessert-1-1024x768.jpg 1024w, https://4seasonswharton.com/wp-content/uploads/2026/01/dessert-1-300x225.jpg 300w, https://4seasonswharton.com/wp-content/uploads/2026/01/dessert-1-768x576.jpg 768w, https://4seasonswharton.com/wp-content/uploads/2026/01/dessert-1-1536x1152.jpg 1536w, https://4seasonswharton.com/wp-content/uploads/2026/01/dessert-1.jpg 2048w",
+            "srcSet": "/wp-content/uploads/2026/01/dessert-1-1024x768.jpg 1024w, /wp-content/uploads/2026/01/dessert-1-300x225.jpg 300w, /wp-content/uploads/2026/01/dessert-1-768x576.jpg 768w, /wp-content/uploads/2026/01/dessert-1-1536x1152.jpg 1536w, /wp-content/uploads/2026/01/dessert-1.jpg 2048w",
             "sizes": "auto, (max-width: 1024px) 100vw, 1024px"
           }
         ]
@@ -1782,27 +1782,27 @@
         "type": "gallery",
         "images": [
           {
-            "url": "https://4seasonswharton.com/wp-content/uploads/2026/01/dining-1.png",
+            "url": "/wp-content/uploads/2026/01/dining-1.png",
             "alt": "Inside 4Seasons dining room",
             "width": 768,
             "height": 1024,
-            "srcSet": "https://4seasonswharton.com/wp-content/uploads/2026/01/dining-1-768x1024.png 768w, https://4seasonswharton.com/wp-content/uploads/2026/01/dining-1-225x300.png 225w, https://4seasonswharton.com/wp-content/uploads/2026/01/dining-1-1152x1536.png 1152w, https://4seasonswharton.com/wp-content/uploads/2026/01/dining-1-1536x2048.png 1536w, https://4seasonswharton.com/wp-content/uploads/2026/01/dining-1-scaled.png 1920w",
+            "srcSet": "/wp-content/uploads/2026/01/dining-1-768x1024.png 768w, /wp-content/uploads/2026/01/dining-1-225x300.png 225w, /wp-content/uploads/2026/01/dining-1-1152x1536.png 1152w, /wp-content/uploads/2026/01/dining-1-1536x2048.png 1536w, /wp-content/uploads/2026/01/dining-1-scaled.png 1920w",
             "sizes": "auto, (max-width: 768px) 100vw, 768px"
           },
           {
-            "url": "https://4seasonswharton.com/wp-content/uploads/2026/01/dining-2.png",
+            "url": "/wp-content/uploads/2026/01/dining-2.png",
             "alt": "A view of our patio",
             "width": 1024,
             "height": 1024,
-            "srcSet": "https://4seasonswharton.com/wp-content/uploads/2026/01/dining-2-1024x1024.png 1024w, https://4seasonswharton.com/wp-content/uploads/2026/01/dining-2-300x300.png 300w, https://4seasonswharton.com/wp-content/uploads/2026/01/dining-2-150x150.png 150w, https://4seasonswharton.com/wp-content/uploads/2026/01/dining-2-768x768.png 768w, https://4seasonswharton.com/wp-content/uploads/2026/01/dining-2-1536x1536.png 1536w, https://4seasonswharton.com/wp-content/uploads/2026/01/dining-2-2048x2048.png 2048w",
+            "srcSet": "/wp-content/uploads/2026/01/dining-2-1024x1024.png 1024w, /wp-content/uploads/2026/01/dining-2-300x300.png 300w, /wp-content/uploads/2026/01/dining-2-150x150.png 150w, /wp-content/uploads/2026/01/dining-2-768x768.png 768w, /wp-content/uploads/2026/01/dining-2-1536x1536.png 1536w, /wp-content/uploads/2026/01/dining-2-2048x2048.png 2048w",
             "sizes": "auto, (max-width: 1024px) 100vw, 1024px"
           },
           {
-            "url": "https://4seasonswharton.com/wp-content/uploads/2026/01/dining-3.png",
+            "url": "/wp-content/uploads/2026/01/dining-3.png",
             "alt": "The iconic 4Seasons monkey statue",
             "width": 768,
             "height": 1024,
-            "srcSet": "https://4seasonswharton.com/wp-content/uploads/2026/01/dining-3-768x1024.png 768w, https://4seasonswharton.com/wp-content/uploads/2026/01/dining-3-225x300.png 225w, https://4seasonswharton.com/wp-content/uploads/2026/01/dining-3-1152x1536.png 1152w, https://4seasonswharton.com/wp-content/uploads/2026/01/dining-3-1536x2048.png 1536w, https://4seasonswharton.com/wp-content/uploads/2026/01/dining-3-scaled.png 1920w",
+            "srcSet": "/wp-content/uploads/2026/01/dining-3-768x1024.png 768w, /wp-content/uploads/2026/01/dining-3-225x300.png 225w, /wp-content/uploads/2026/01/dining-3-1152x1536.png 1152w, /wp-content/uploads/2026/01/dining-3-1536x2048.png 1536w, /wp-content/uploads/2026/01/dining-3-scaled.png 1920w",
             "sizes": "auto, (max-width: 768px) 100vw, 768px"
           }
         ]
@@ -1824,51 +1824,51 @@
         "type": "gallery",
         "images": [
           {
-            "url": "https://4seasonswharton.com/wp-content/uploads/2026/01/main-1-1.png",
+            "url": "/wp-content/uploads/2026/01/main-1-1.png",
             "alt": "4Seasons dish",
             "width": 768,
             "height": 1024,
-            "srcSet": "https://4seasonswharton.com/wp-content/uploads/2026/01/main-1-1-768x1024.png 768w, https://4seasonswharton.com/wp-content/uploads/2026/01/main-1-1-225x300.png 225w, https://4seasonswharton.com/wp-content/uploads/2026/01/main-1-1-1152x1536.png 1152w, https://4seasonswharton.com/wp-content/uploads/2026/01/main-1-1-1536x2048.png 1536w, https://4seasonswharton.com/wp-content/uploads/2026/01/main-1-1-scaled.png 1920w",
+            "srcSet": "/wp-content/uploads/2026/01/main-1-1-768x1024.png 768w, /wp-content/uploads/2026/01/main-1-1-225x300.png 225w, /wp-content/uploads/2026/01/main-1-1-1152x1536.png 1152w, /wp-content/uploads/2026/01/main-1-1-1536x2048.png 1536w, /wp-content/uploads/2026/01/main-1-1-scaled.png 1920w",
             "sizes": "auto, (max-width: 768px) 100vw, 768px"
           },
           {
-            "url": "https://4seasonswharton.com/wp-content/uploads/2026/01/main-2.png",
+            "url": "/wp-content/uploads/2026/01/main-2.png",
             "alt": "4Seasons salmon",
             "width": 768,
             "height": 1024,
-            "srcSet": "https://4seasonswharton.com/wp-content/uploads/2026/01/main-2-768x1024.png 768w, https://4seasonswharton.com/wp-content/uploads/2026/01/main-2-225x300.png 225w, https://4seasonswharton.com/wp-content/uploads/2026/01/main-2-1152x1536.png 1152w, https://4seasonswharton.com/wp-content/uploads/2026/01/main-2-1536x2048.png 1536w, https://4seasonswharton.com/wp-content/uploads/2026/01/main-2-scaled.png 1920w",
+            "srcSet": "/wp-content/uploads/2026/01/main-2-768x1024.png 768w, /wp-content/uploads/2026/01/main-2-225x300.png 225w, /wp-content/uploads/2026/01/main-2-1152x1536.png 1152w, /wp-content/uploads/2026/01/main-2-1536x2048.png 1536w, /wp-content/uploads/2026/01/main-2-scaled.png 1920w",
             "sizes": "auto, (max-width: 768px) 100vw, 768px"
           },
           {
-            "url": "https://4seasonswharton.com/wp-content/uploads/2026/01/drink-1.png",
+            "url": "/wp-content/uploads/2026/01/drink-1.png",
             "alt": "4Seasons cocktail",
             "width": 1024,
             "height": 768,
-            "srcSet": "https://4seasonswharton.com/wp-content/uploads/2026/01/drink-1-1024x768.png 1024w, https://4seasonswharton.com/wp-content/uploads/2026/01/drink-1-300x225.png 300w, https://4seasonswharton.com/wp-content/uploads/2026/01/drink-1-768x576.png 768w, https://4seasonswharton.com/wp-content/uploads/2026/01/drink-1-1536x1152.png 1536w, https://4seasonswharton.com/wp-content/uploads/2026/01/drink-1-2048x1536.png 2048w",
+            "srcSet": "/wp-content/uploads/2026/01/drink-1-1024x768.png 1024w, /wp-content/uploads/2026/01/drink-1-300x225.png 300w, /wp-content/uploads/2026/01/drink-1-768x576.png 768w, /wp-content/uploads/2026/01/drink-1-1536x1152.png 1536w, /wp-content/uploads/2026/01/drink-1-2048x1536.png 2048w",
             "sizes": "auto, (max-width: 1024px) 100vw, 1024px"
           },
           {
-            "url": "https://4seasonswharton.com/wp-content/uploads/2026/01/Abe-scaled-1.png",
+            "url": "/wp-content/uploads/2026/01/Abe-scaled-1.png",
             "alt": "4Seasons owner serving a happy customer",
             "width": 683,
             "height": 1024,
-            "srcSet": "https://4seasonswharton.com/wp-content/uploads/2026/01/Abe-scaled-1-683x1024.png 683w, https://4seasonswharton.com/wp-content/uploads/2026/01/Abe-scaled-1-1365x2048.png 1365w, https://4seasonswharton.com/wp-content/uploads/2026/01/Abe-scaled-1-200x300.png 200w, https://4seasonswharton.com/wp-content/uploads/2026/01/Abe-scaled-1-768x1152.png 768w, https://4seasonswharton.com/wp-content/uploads/2026/01/Abe-scaled-1-1024x1536.png 1024w, https://4seasonswharton.com/wp-content/uploads/2026/01/Abe-scaled-1-scaled.png 1707w",
+            "srcSet": "/wp-content/uploads/2026/01/Abe-scaled-1-683x1024.png 683w, /wp-content/uploads/2026/01/Abe-scaled-1-1365x2048.png 1365w, /wp-content/uploads/2026/01/Abe-scaled-1-200x300.png 200w, /wp-content/uploads/2026/01/Abe-scaled-1-768x1152.png 768w, /wp-content/uploads/2026/01/Abe-scaled-1-1024x1536.png 1024w, /wp-content/uploads/2026/01/Abe-scaled-1-scaled.png 1707w",
             "sizes": "auto, (max-width: 683px) 100vw, 683px"
           },
           {
-            "url": "https://4seasonswharton.com/wp-content/uploads/2026/01/patio-1-scaled-1.png",
+            "url": "/wp-content/uploads/2026/01/patio-1-scaled-1.png",
             "alt": "Customers enjoying thier meal on our patio",
             "width": 768,
             "height": 1024,
-            "srcSet": "https://4seasonswharton.com/wp-content/uploads/2026/01/patio-1-scaled-1-768x1024.png 768w, https://4seasonswharton.com/wp-content/uploads/2026/01/patio-1-scaled-1-225x300.png 225w, https://4seasonswharton.com/wp-content/uploads/2026/01/patio-1-scaled-1-1152x1536.png 1152w, https://4seasonswharton.com/wp-content/uploads/2026/01/patio-1-scaled-1-1536x2048.png 1536w, https://4seasonswharton.com/wp-content/uploads/2026/01/patio-1-scaled-1-scaled.png 1920w",
+            "srcSet": "/wp-content/uploads/2026/01/patio-1-scaled-1-768x1024.png 768w, /wp-content/uploads/2026/01/patio-1-scaled-1-225x300.png 225w, /wp-content/uploads/2026/01/patio-1-scaled-1-1152x1536.png 1152w, /wp-content/uploads/2026/01/patio-1-scaled-1-1536x2048.png 1536w, /wp-content/uploads/2026/01/patio-1-scaled-1-scaled.png 1920w",
             "sizes": "auto, (max-width: 768px) 100vw, 768px"
           },
           {
-            "url": "https://4seasonswharton.com/wp-content/uploads/2026/01/Abe-2-scaled-1.png",
+            "url": "/wp-content/uploads/2026/01/Abe-2-scaled-1.png",
             "alt": "4Seasons owner making drinks on Christmas Eve",
             "width": 683,
             "height": 1024,
-            "srcSet": "https://4seasonswharton.com/wp-content/uploads/2026/01/Abe-2-scaled-1-683x1024.png 683w, https://4seasonswharton.com/wp-content/uploads/2026/01/Abe-2-scaled-1-200x300.png 200w, https://4seasonswharton.com/wp-content/uploads/2026/01/Abe-2-scaled-1-768x1152.png 768w, https://4seasonswharton.com/wp-content/uploads/2026/01/Abe-2-scaled-1-1024x1536.png 1024w, https://4seasonswharton.com/wp-content/uploads/2026/01/Abe-2-scaled-1-1365x2048.png 1365w, https://4seasonswharton.com/wp-content/uploads/2026/01/Abe-2-scaled-1-scaled.png 1707w",
+            "srcSet": "/wp-content/uploads/2026/01/Abe-2-scaled-1-683x1024.png 683w, /wp-content/uploads/2026/01/Abe-2-scaled-1-200x300.png 200w, /wp-content/uploads/2026/01/Abe-2-scaled-1-768x1152.png 768w, /wp-content/uploads/2026/01/Abe-2-scaled-1-1024x1536.png 1024w, /wp-content/uploads/2026/01/Abe-2-scaled-1-1365x2048.png 1365w, /wp-content/uploads/2026/01/Abe-2-scaled-1-scaled.png 1707w",
             "sizes": "auto, (max-width: 683px) 100vw, 683px"
           }
         ]
