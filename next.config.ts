@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   output: 'export',
   trailingSlash: true,
-  // basePath: '/four-seasons-wharton', // Uncomment and set to repository name if deploying to a GitHub Pages project subpath
+  basePath: '/4SeasonsWharton',
   images: {
     unoptimized: true, // Required for static export
     formats: ['image/webp'],
