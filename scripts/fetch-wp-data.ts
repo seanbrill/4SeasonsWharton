@@ -2,8 +2,8 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as cheerio from 'cheerio';
 
-const WP_API_URL = 'https://4seasonswharton.com/wp-json/wp/v2';
-const RSS_URL = 'https://4seasonswharton.com/feed/?post_type=themo_event';
+const WP_API_URL = 'https://05f.997.myftpupload.com/wp-json/wp/v2';
+const RSS_URL = 'https://05f.997.myftpupload.com/feed/?post_type=themo_event';
 
 const DATA_DIR = path.join(__dirname, '../src/data');
 
@@ -93,9 +93,7 @@ async function fetchPages() {
                         url: $img.attr('src')?.replace(/-\d+x\d+(\.[a-zA-Z]+)$/, '$1'),
                         alt: $img.attr('alt') || '',
                         width: parseInt($img.attr('width') || '800', 10),
-                        height: parseInt($img.attr('height') || '600', 10),
-                        srcSet: $img.attr('srcset'),
-                        sizes: $img.attr('sizes')
+                        height: parseInt($img.attr('height') || '600', 10)
                     });
                 });
             } else {
