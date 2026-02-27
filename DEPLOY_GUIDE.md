@@ -101,8 +101,6 @@ jobs:
         uses: actions/deploy-pages@v4
 ```
 
-> **Note on BasePath**: If you are deploying this to a repository named something like `username/four-seasons`, the URL will default to `username.github.io/four-seasons`. The `actions/configure-pages` step handles this for you usually, but you may need to uncomment the `basePath` parameter in your `next.config.ts`. If you are using a custom domain (Step 4), **do not set a base path**.
-
 Commit and push this YAML file.
 
 ## Step 3: Enable Pages in Repository Settings
