@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
 import { useWPData } from '../useWPData';
 import type { WP_Page } from '@/types/wordpress';
 import type { WPImageProps } from './interfaces/WPImage.types';
@@ -24,7 +23,7 @@ export default function WPImage({
     priority = false,
     imageIndex = 0
 }: WPImageProps) {
-    const { data, loading, error } = useWPData<WP_Page>({
+    const { data } = useWPData<WP_Page>({
         slug,
         field,
         enabled: !isStatic
@@ -33,25 +32,43 @@ export default function WPImage({
     // Content Extraction Logic
     let displayContent: ImageData | undefined = isStatic ? staticData as ImageData : staticData as ImageData;
 
-    if (!isStatic && field === 'whole_page_object' && data?.content?.rendered) {
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(data.content.rendered, 'text/html');
-        const images = doc.querySelectorAll('img');
-        const img = images[imageIndex];
+    if (!isStatic && field === 'whole_page_object' && (data as WP_Page & { content?: { rendered?: any } })?.content?.rendered) {
+        const parsedContent = (data as WP_Page & { content: { rendered: any } }).content.rendered;
 
-        if (img) {
-            // Clean up src for full resolution on desktop
-            let src = img.src;
-            src = src.replace(/-\d+x\d+(\.[a-zA-Z]+)$/, '$1');
+        if (parsedContent && typeof parsedContent === 'object' && parsedContent.type === 'gallery') {
+            const img = parsedContent.images[imageIndex];
+            if (img) {
+                displayContent = img;
+            } else {
+                displayContent = undefined;
+            }
+        } else if (typeof parsedContent === 'string') {
+            // SSR Regex Fallback for legacy raw string HTML
+            const imgMatches = parsedContent.match(/<img[^>]+>/g);
 
-            displayContent = {
-                url: src,
-                alt: img.alt || '',
-                width: parseInt(img.getAttribute('width') || '800'),
-                height: parseInt(img.getAttribute('height') || '600'),
-                srcSet: img.srcset || undefined,
-                sizes: img.sizes || undefined
-            };
+            if (imgMatches && imgMatches[imageIndex]) {
+                const imgStr = imgMatches[imageIndex];
+                const srcMatch = imgStr.match(/src="([^"]+)"/);
+                const altMatch = imgStr.match(/alt="([^"]*)"/);
+                const srcsetMatch = imgStr.match(/srcset="([^"]+)"/);
+                const sizesMatch = imgStr.match(/sizes="([^"]+)"/);
+                const widthMatch = imgStr.match(/width="([^"]+)"/);
+                const heightMatch = imgStr.match(/height="([^"]+)"/);
+
+                let src = srcMatch ? srcMatch[1] : '';
+                src = src.replace(/-\d+x\d+(\.[a-zA-Z]+)$/, '$1');
+
+                displayContent = {
+                    url: src,
+                    alt: altMatch ? altMatch[1] : '',
+                    width: widthMatch ? parseInt(widthMatch[1], 10) : 800,
+                    height: heightMatch ? parseInt(heightMatch[1], 10) : 600,
+                    srcSet: srcsetMatch ? srcsetMatch[1] : undefined,
+                    sizes: sizesMatch ? sizesMatch[1] : undefined
+                };
+            } else {
+                displayContent = undefined;
+            }
         } else {
             displayContent = undefined;
         }
@@ -59,8 +76,8 @@ export default function WPImage({
 
     if (!displayContent) return null;
 
-    const imageUrl = displayContent.url || (displayContent as any).source_url;
-    const imageAlt = displayContent.alt || (displayContent as any).alt_text || '';
+    const imageUrl = displayContent.url || (displayContent as ImageData & { source_url?: string }).source_url;
+    const imageAlt = displayContent.alt || (displayContent as ImageData & { alt_text?: string }).alt_text || '';
     const width = displayContent.width || 800;
     const height = displayContent.height || 600;
     const srcSet = displayContent.srcSet;
@@ -69,6 +86,7 @@ export default function WPImage({
     // Use standard <img> to leverage WordPress native srcset/sizes for mobile optimization
     // Next/Image with unoptimized=true doesn't easily allow custom srcset
     return (
+        /* eslint-disable-next-line @next/next/no-img-element */
         <img
             src={imageUrl}
             srcSet={srcSet}

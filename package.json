@@ -3,15 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "rm -rf .next && next dev",
     "build": "rm -rf .next && next build",
     "serve": "npm run build && npx serve out",
     "start": "next start",
-    "lint": "eslint",
-    "deploy": "bash ./scripts/deploy.sh",
-    "deploy:rollback": "bash ./scripts/rollback.sh",
-    "flush-cache": "bash ./scripts/flush_cache.sh",
-    "ssh": "./scripts/ssh-connect.sh"
+    "lint": "eslint"
   },
   "dependencies": {
     "next": "16.1.1",
@@ -24,6 +20,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "cheerio": "^1.2.0",
     "eslint": "^9",
     "eslint-config-next": "16.1.1",
     "tailwindcss": "^4",

@@ -2,6 +2,7 @@
 @plugin "@tailwindcss/typography";
 
 :root {
+  --cache-buster-1: "abc";
   --background: #ffffff;
   --foreground: #171717;
 }

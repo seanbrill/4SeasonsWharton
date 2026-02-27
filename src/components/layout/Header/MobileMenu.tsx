@@ -14,7 +14,6 @@ const navLinks = [
     { href: '/', label: 'Home' },
     { href: '/menu', label: 'Menu' },
     { href: '/catering', label: 'Catering' },
-    { href: '/events', label: 'Events' },
     { href: '/contact-us', label: 'Contact' },
 ];
 
@@ -111,8 +110,8 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                                     href={link.href}
                                     onClick={onClose}
                                     className={`block px-4 py-3 rounded-lg text-base font-medium transition-colors ${isActive(link.href)
-                                            ? 'text-amber-600 bg-amber-50'
-                                            : 'text-stone-700 hover:text-stone-900 hover:bg-stone-50'
+                                        ? 'text-amber-600 bg-amber-50'
+                                        : 'text-stone-700 hover:text-stone-900 hover:bg-stone-50'
                                         }`}
                                 >
                                     {link.label}

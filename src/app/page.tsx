@@ -85,6 +85,7 @@ export default async function Home() {
                       </div>
                       <div className="bg-white border border-stone-200 p-1.5 rounded-full shadow-sm flex items-center justify-center">
                         {/* Using a reliable CDN for the Google G logo */}
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" alt="Google" className="w-4 h-4" />
                       </div>
                     </div>

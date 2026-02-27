@@ -1,0 +1,32 @@
+
+> four-seasons-wharton@0.1.0 build
+> rm -rf .next && next build
+
+▲ Next.js 16.1.1 (Turbopack)
+- Environments: .env.local
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 886.6ms
+  Running TypeScript ...
+  Collecting page data using 13 workers ...
+  Generating static pages using 13 workers (0/10) ...
+MenuTabs loaded. TABS: [{"id":"lunch","label":"Lunch","slug":"lunch-menu"},{"id":"dinner","label":"Dinner","slug":"dinner-menu"},{"id":"kids","label":"Kids Menu","slug":"kids-menu"},{"id":"dessert","label":"Dessert","slug":"dessert-menu"}]
+  Generating static pages using 13 workers (2/10) 
+  Generating static pages using 13 workers (4/10) 
+  Generating static pages using 13 workers (7/10) 
+✓ Generating static pages using 13 workers (10/10) in 155.7ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ○ /catering
+├ ○ /contact-us
+├ ○ /events
+├ ○ /menu
+├ ○ /robots.txt
+└ ○ /sitemap.xml
+
+
+○  (Static)  prerendered as static content
+

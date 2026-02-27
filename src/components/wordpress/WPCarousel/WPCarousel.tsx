@@ -1,7 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useWPData } from '../useWPData';
 import type { WPCarouselProps, GalleryImage } from './interfaces/WPCarousel.types';
 import { ANIMATION, LOADING, Z_INDEX } from '@/lib/constants/design-tokens';
@@ -48,39 +47,78 @@ export default function WPCarousel({
                 }
             } else {
                 // mode 2: Content Extraction (New)
-                const contentToParse = pageContent || (wpPageData as { content?: { rendered?: string } })?.content?.rendered || '';
+                const parsedContent = pageContent || (wpPageData as { content?: { rendered?: any } })?.content?.rendered;
 
-                if (contentToParse) {
-                    const parser = new DOMParser();
-                    const doc = parser.parseFromString(contentToParse, 'text/html');
-                    const imgTags = Array.from(doc.querySelectorAll('img'));
+                if (parsedContent && typeof parsedContent === 'object' && parsedContent.type === 'gallery') {
+                    extractedImages = parsedContent.images.map((img: any, idx: number) => ({
+                        id: idx,
+                        ...img
+                    }));
+                } else if (typeof parsedContent === 'string') {
+                    // Fallback to legacy string HTML parsing if still somehow using old structure
+                    if (typeof window !== 'undefined') {
+                        const parser = new DOMParser();
+                        const doc = parser.parseFromString(parsedContent, 'text/html');
+                        const imgTags = Array.from(doc.querySelectorAll('img'));
 
-                    extractedImages = imgTags.map((img, idx) => {
-                        // Priority 1: Use the parent <a> tag href if available
-                        const parentLink = img.closest('a');
-                        let src = parentLink ? parentLink.href : img.src;
+                        extractedImages = imgTags.map((img, idx) => {
+                            const parentLink = img.closest('a');
+                            let src = parentLink ? parentLink.href : img.src;
 
-                        // Priority 2: If no link, try to clean up the img src
-                        if (!parentLink) {
-                            src = src.replace(/-\d+x\d+(\.[a-zA-Z]+)$/, '$1');
+                            if (!parentLink) {
+                                src = src.replace(/-\d+x\d+(\.[a-zA-Z]+)$/, '$1');
+                            }
+
+                            return {
+                                id: idx,
+                                url: src,
+                                alt: img.alt,
+                                caption: img.getAttribute('data-caption') || '',
+                                srcSet: undefined,
+                                sizes: undefined
+                            };
+                        }).filter(img => img.url);
+                    } else {
+                        const imgMatches = parsedContent.match(/<img[^>]+>/g) || [];
+                        let idx = 0;
+                        for (const imgStr of imgMatches) {
+                            const srcMatch = imgStr.match(/src="([^"]+)"/i);
+                            const altMatch = imgStr.match(/alt="([^"]*)"/i);
+                            const captionMatch = imgStr.match(/data-caption="([^"]*)"/i);
+
+                            if (srcMatch) {
+                                let src = srcMatch[1];
+                                src = src.replace(/-\d+x\d+(\.[a-zA-Z]+)$/, '$1');
+                                extractedImages.push({
+                                    id: idx++,
+                                    url: src,
+                                    alt: altMatch ? altMatch[1] : '',
+                                    caption: captionMatch ? captionMatch[1] : '',
+                                    srcSet: undefined,
+                                    sizes: undefined
+                                });
+                            }
                         }
-
-                        return {
-                            id: idx,
-                            url: src,
-                            alt: img.alt,
-                            caption: img.getAttribute('data-caption') || '',
-                            srcSet: undefined,
-                            sizes: undefined
-                        };
-                    }).filter(img => img.url);
+                    }
                 }
             }
         }
 
-        setImages(extractedImages);
+        requestAnimationFrame(() => setImages(extractedImages));
     }, [isStatic, staticData, wpPageData, field, pageContent]);
 
+
+    const nextSlide = useCallback(() => {
+        if (images.length > 0) {
+            setActiveIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+        }
+    }, [images.length]);
+
+    const prevSlide = useCallback(() => {
+        if (images.length > 0) {
+            setActiveIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+        }
+    }, [images.length]);
 
     // Auto-advance
     useEffect(() => {
@@ -90,23 +128,11 @@ export default function WPCarousel({
             nextSlide();
         }, ANIMATION.CAROUSEL_SLIDE_DURATION);
         return () => clearInterval(timer);
-    }, [activeIndex, images.length, isPaused, isReady]);
+    }, [activeIndex, images.length, isPaused, isReady, nextSlide]);
 
     // Handle Image Load
     const handleImageLoad = () => {
         setLoadedCount(prev => prev + 1);
-    };
-
-    const nextSlide = () => {
-        if (images.length > 0) {
-            setActiveIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
-        }
-    };
-
-    const prevSlide = () => {
-        if (images.length > 0) {
-            setActiveIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
-        }
     };
 
     return (

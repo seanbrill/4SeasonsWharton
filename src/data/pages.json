@@ -1,0 +1,1881 @@
+{
+  "dessert-menu": {
+    "id": 1977,
+    "date": "2026-01-04T22:40:33",
+    "slug": "dessert-menu",
+    "title": {
+      "rendered": "dessert-menu"
+    },
+    "content": {
+      "rendered": {
+        "type": "menu",
+        "sections": [
+          {
+            "heading": "Desserts",
+            "items": [
+              {
+                "text": "Dessert of the Day – 9.99",
+                "name": "Dessert of the Day",
+                "price": "9.99",
+                "description": ""
+              },
+              {
+                "text": "Swiss Raspberry Cheesecake – 9.99",
+                "name": "Swiss Raspberry Cheesecake",
+                "price": "9.99",
+                "description": ""
+              },
+              {
+                "text": "Swiss Limoncello Cake – 9.99",
+                "name": "Swiss Limoncello Cake",
+                "price": "9.99",
+                "description": ""
+              },
+              {
+                "text": "Homemade Cannoli – 9.99",
+                "name": "Homemade Cannoli",
+                "price": "9.99",
+                "description": ""
+              },
+              {
+                "text": "Old Fashion Chocolate Cake – 9.99",
+                "name": "Old Fashion Chocolate Cake",
+                "price": "9.99",
+                "description": ""
+              },
+              {
+                "text": "Homemade Tiramisu – 9.99",
+                "name": "Homemade Tiramisu",
+                "price": "9.99",
+                "description": ""
+              },
+              {
+                "text": "Berries and Cream– 9.99",
+                "description": "Fresh berries with Baileys and crème fraîche"
+              },
+              {
+                "text": "Tartufo Ice Cream – 9.99",
+                "name": "Tartufo Ice Cream",
+                "price": "9.99",
+                "description": ""
+              },
+              {
+                "text": "Fresh Sorbet – 9.99",
+                "name": "Fresh Sorbet",
+                "price": "9.99",
+                "description": ""
+              }
+            ]
+          },
+          {
+            "heading": "After Dinner Drinks",
+            "items": [
+              {
+                "text": "Selection of Coffee and Tea – 3.99",
+                "name": "Selection of Coffee and Tea",
+                "price": "3.99",
+                "description": ""
+              },
+              {
+                "text": "Specialty After Dinner Cocktails – 9.99",
+                "name": "Specialty After Dinner Cocktails",
+                "price": "9.99",
+                "description": ""
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "excerpt": {
+      "rendered": "Desserts Dessert of the Day – 9.99Swiss Raspberry Cheesecake – 9.99Swiss Limoncello Cake – 9.99Homemade Cannoli – 9.99Old Fashion Chocolate Cake – 9.99Homemade Tiramisu – 9.99Berries and Cream (Fresh berries with Baileys and crème fraîche) – 9.99Tartufo Ice Cream – 9.99Fresh Sorbet – 9.99 After Dinner Drinks Selection of Coffee and Tea – 3.99Specialty After […]"
+    }
+  },
+  "kids-menu": {
+    "id": 1974,
+    "date": "2026-01-04T22:38:10",
+    "slug": "kids-menu",
+    "title": {
+      "rendered": "kids-menu"
+    },
+    "content": {
+      "rendered": {
+        "type": "menu",
+        "sections": [
+          {
+            "heading": "Kids Entrées",
+            "items": [
+              {
+                "text": "Pasta with Butter – 14.99",
+                "name": "Pasta with Butter",
+                "price": "14.99",
+                "description": ""
+              },
+              {
+                "text": "Pasta with Meat Sauce – 14.99",
+                "name": "Pasta with Meat Sauce",
+                "price": "14.99",
+                "description": ""
+              },
+              {
+                "text": "Chicken Fingers with Fries – 14.99",
+                "name": "Chicken Fingers with Fries",
+                "price": "14.99",
+                "description": ""
+              },
+              {
+                "text": "Grilled Chicken with Veggies – 14.99",
+                "name": "Grilled Chicken with Veggies",
+                "price": "14.99",
+                "description": ""
+              },
+              {
+                "text": "Shrimp Scampi with Rice – 19.99",
+                "name": "Shrimp Scampi with Rice",
+                "price": "19.99",
+                "description": ""
+              }
+            ]
+          },
+          {
+            "heading": "Kids Drinks",
+            "items": [
+              {
+                "text": "Orange Juice – 2.49",
+                "name": "Orange Juice",
+                "price": "2.49",
+                "description": ""
+              },
+              {
+                "text": "Cranberry Juice – 2.49",
+                "name": "Cranberry Juice",
+                "price": "2.49",
+                "description": ""
+              },
+              {
+                "text": "Pineapple Juice – 2.49",
+                "name": "Pineapple Juice",
+                "price": "2.49",
+                "description": ""
+              },
+              {
+                "text": "Milk – 2.49",
+                "name": "Milk",
+                "price": "2.49",
+                "description": ""
+              }
+            ]
+          },
+          {
+            "heading": "Kids Desserts",
+            "items": [
+              {
+                "text": "Chocolate or Vanilla Sundae – 3.99",
+                "name": "Chocolate or Vanilla Sundae",
+                "price": "3.99",
+                "description": ""
+              },
+              {
+                "text": "Available for children 12 and under",
+                "description": ""
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "excerpt": {
+      "rendered": "Kids Entrées Pasta with Butter – 14.99Pasta with Meat Sauce – 14.99Chicken Fingers with Fries – 14.99Grilled Chicken with Veggies – 14.99Shrimp Scampi with Rice – 19.99 Kids Drinks Orange Juice – 2.49Cranberry Juice – 2.49Pineapple Juice – 2.49Milk – 2.49 Kids Desserts Chocolate or Vanilla Sundae – 3.99 Available for children 12 and under"
+    }
+  },
+  "dinner-menu": {
+    "id": 1971,
+    "date": "2026-01-04T22:17:08",
+    "slug": "dinner-menu",
+    "title": {
+      "rendered": "dinner-menu"
+    },
+    "content": {
+      "rendered": {
+        "type": "menu",
+        "sections": [
+          {
+            "heading": "Starters",
+            "items": [
+              {
+                "text": "French Onion Soup – 7.99",
+                "name": "French Onion Soup",
+                "price": "7.99",
+                "description": ""
+              },
+              {
+                "text": "Lobster Bisque Soup – 7.99",
+                "name": "Lobster Bisque Soup",
+                "price": "7.99",
+                "description": ""
+              },
+              {
+                "text": "Crispy Calamari – 14.99",
+                "name": "Crispy Calamari",
+                "price": "14.99",
+                "description": ""
+              },
+              {
+                "text": "House Made Hummus – 12.99",
+                "name": "House Made Hummus",
+                "price": "12.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Fresh Pita"
+              },
+              {
+                "text": "Tomato Burrata – 12.99",
+                "name": "Tomato Burrata",
+                "price": "12.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Burrata Cheese, Ripe Tomato, Basil, Balsamic Glaze, Olive Oil"
+              },
+              {
+                "text": "Grilled Octopus – 14.99",
+                "name": "Grilled Octopus",
+                "price": "14.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Mixed Greens, Chorizo, Smoked Paprika Vinaigrette"
+              },
+              {
+                "text": "Charcuterie Board – 14.99",
+                "name": "Charcuterie Board",
+                "price": "14.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Olives and Cheese"
+              },
+              {
+                "text": "Sautéed Calamari – 14.99",
+                "name": "Sautéed Calamari",
+                "price": "14.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Chorizo, White Wine"
+              },
+              {
+                "text": "Bocconcini di Mozzarella – 12.99",
+                "name": "Bocconcini di Mozzarella",
+                "price": "12.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Baked Mozzarella, Prosciutto, Tomato Broth"
+              },
+              {
+                "text": "Prosciutto e Melon – 12.99",
+                "name": "Prosciutto e Melon",
+                "price": "12.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Prosciutto Wrapped Fresh Melon"
+              },
+              {
+                "text": "Tarte de Barcelona – 12.99",
+                "name": "Tarte de Barcelona",
+                "price": "12.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Apple, Bacon, Brie"
+              },
+              {
+                "text": "Mixed Marinated Olives of Spain – 7.99",
+                "name": "Mixed Marinated Olives of Spain",
+                "price": "7.99",
+                "description": ""
+              },
+              {
+                "text": "Garlic Shrimp Crostini – 14.99",
+                "name": "Garlic Shrimp Crostini",
+                "price": "14.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Roasted Shrimp on Garlic Toast Points"
+              },
+              {
+                "text": "Sausage Calabria – 14.99",
+                "name": "Sausage Calabria",
+                "price": "14.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Grilled Sweet Sausage, Hot Peppers & Caramelized Onions"
+              },
+              {
+                "text": "Eggplant Rollatini – 12.99",
+                "name": "Eggplant Rollatini",
+                "price": "12.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Grilled Eggplant, Roasted Tomato, Fresh Mozzarella"
+              },
+              {
+                "text": "Smoked Salmon Carpaccio – 14.99",
+                "name": "Smoked Salmon Carpaccio",
+                "price": "14.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Arugula, Capers, Onion"
+              }
+            ]
+          },
+          {
+            "heading": "Salads",
+            "items": [
+              {
+                "text": "Add Grilled Chicken +10 | Grilled Shrimp +15 | Grilled, Blackened or Smoked Salmon +15",
+                "description": ""
+              },
+              {
+                "text": "Seasons Salad – 8.99",
+                "name": "Seasons Salad",
+                "price": "8.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Mixed Greens, Tomato, Onion, Balsamic"
+              },
+              {
+                "text": "Caesar Salad – 9.99",
+                "name": "Caesar Salad",
+                "price": "9.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Hearts of Romaine, Croutons, Parmesan"
+              },
+              {
+                "text": "Tritata Salad – 9.99",
+                "name": "Tritata Salad",
+                "price": "9.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Chopped Romaine, Goat Cheese, Cherry Tomatoes, Bacon"
+              },
+              {
+                "text": "Arugula Salad – 9.99",
+                "name": "Arugula Salad",
+                "price": "9.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Arugula, Shaved Parmesan, Lemon Vinaigrette"
+              },
+              {
+                "text": "Roquefort Salad – 9.99",
+                "name": "Roquefort Salad",
+                "price": "9.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Mixed Greens, Walnuts, Roquefort Cheese, Fresh Melon, Vinaigrette"
+              },
+              {
+                "text": "Beet Salad – 9.99",
+                "name": "Beet Salad",
+                "price": "9.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Mixed Greens, Asparagus, Beets, Cherry Tomatoes, Balsamic"
+              },
+              {
+                "text": "La Linda Salad – 9.99",
+                "name": "La Linda Salad",
+                "price": "9.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Romaine, Cranberries, Tomato, Walnuts, Olive Oil & Balsamic, Shaved Parmesan"
+              }
+            ]
+          },
+          {
+            "heading": "Poultry & Meat",
+            "items": [
+              {
+                "text": "Chicken Josephine – 23.99",
+                "name": "Chicken Josephine",
+                "price": "23.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Artichokes, Sun-dried Tomatoes, Asparagus, White Wine"
+              },
+              {
+                "text": "Chicken Champignon – 23.99",
+                "name": "Chicken Champignon",
+                "price": "23.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Mushrooms, Marsala Wine"
+              },
+              {
+                "text": "Chicken Balsamic – 23.99",
+                "name": "Chicken Balsamic",
+                "price": "23.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Sausage, Hot Cherry Peppers, Balsamic"
+              },
+              {
+                "text": "Chicken Venecia – 23.99",
+                "name": "Chicken Venecia",
+                "price": "23.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Eggplant, Prosciutto, Mozzarella, Sherry Wine Sauce"
+              },
+              {
+                "text": "4 Seasons Chicken – 23.99",
+                "name": "4 Seasons Chicken",
+                "price": "23.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Spinach, Tomato, Fresh Mozzarella"
+              },
+              {
+                "text": "Chicken Lavallette – 23.99",
+                "name": "Chicken Lavallette",
+                "price": "23.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Prosciutto, Tomato, Asparagus, Cherry Wine Sauce"
+              },
+              {
+                "text": "Grilled New York Strip Roquefort – 39.99",
+                "name": "Grilled New York Strip Roquefort",
+                "price": "39.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Mushrooms, Brandy, Roquefort Cheese"
+              },
+              {
+                "text": "NY Strip Au Poivre – 39.99",
+                "name": "NY Strip Au Poivre",
+                "price": "39.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Peppercorn Brandy Sauce"
+              },
+              {
+                "text": "Matador Steak – 49.99",
+                "name": "Matador Steak",
+                "price": "49.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "New York Strip, Shrimp, Scallops, Red Wine Reduction"
+              },
+              {
+                "text": "Steak St. Paul – 39.99",
+                "name": "Steak St. Paul",
+                "price": "39.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Cherry Peppers, Mushrooms, Cognac Sauce"
+              },
+              {
+                "text": "Steak de G. – 39.99",
+                "name": "Steak de G.",
+                "price": "39.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Seasoned New York Strip, French Fries"
+              },
+              {
+                "text": "Steak & Shrimp St. John – 44.99",
+                "name": "Steak & Shrimp St. John",
+                "price": "44.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Garlic Sauce"
+              },
+              {
+                "text": "Pork Chop Bilbao – 32.99",
+                "name": "Pork Chop Bilbao",
+                "price": "32.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Double-Cut Pork Chop, Mediterranean Seasoning, Mushroom Cognac Sauce"
+              }
+            ]
+          },
+          {
+            "heading": "Paellas",
+            "items": [
+              {
+                "text": "Ibiza Paella – 34.99",
+                "name": "Ibiza Paella",
+                "price": "34.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Shrimp, Calamari, Baby Octopus"
+              },
+              {
+                "text": "Mallorca Paella – 24.99",
+                "name": "Mallorca Paella",
+                "price": "24.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Chicken, Chorizo, Saffron Rice"
+              },
+              {
+                "text": "Girona Paella – 39.99",
+                "name": "Girona Paella",
+                "price": "39.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Chicken, Chorizo, Shrimp, Baby Octopus, Clams, Mussels, Calamari"
+              }
+            ]
+          },
+          {
+            "heading": "Homemade Pasta",
+            "items": [
+              {
+                "text": "Catalana – 24.99",
+                "name": "Catalana",
+                "price": "24.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Mussels, Clams, Smoked Chorizo in Garlic Broth over Fettuccine"
+              },
+              {
+                "text": "Orecchiette – 22.99",
+                "name": "Orecchiette",
+                "price": "22.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Mushrooms, Sausage, Sun-dried Tomatoes, Broccoli, Garlic & Olive Oil"
+              },
+              {
+                "text": "Rigatoni Bolognese – 22.99",
+                "name": "Rigatoni Bolognese",
+                "price": "22.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Ground Sirloin, Seasoned Tomatoes, Touch of Cream"
+              },
+              {
+                "text": "Gnocchi – 22.99",
+                "name": "Gnocchi",
+                "price": "22.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Peas, Porcini Mushroom Sauce"
+              },
+              {
+                "text": "Linguini with Clams – 24.99",
+                "name": "Linguini with Clams",
+                "price": "24.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "White Wine, Clams, Herbs"
+              },
+              {
+                "text": "Farfalle – 21.99",
+                "name": "Farfalle",
+                "price": "21.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Tomato, Capers, Olives, Garlic, Olive Oil"
+              },
+              {
+                "text": "Pappardelle – 34.99",
+                "name": "Pappardelle",
+                "price": "34.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Shrimp, Scallops, Sun-dried Tomato, Roasted Garlic, Asparagus, Olive Oil"
+              },
+              {
+                "text": "Fettuccine Seafood – 34.99",
+                "name": "Fettuccine Seafood",
+                "price": "34.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Mussels, Shrimp, Calamari, Clams, Light Tomato Broth"
+              },
+              {
+                "text": "Penne Pesto – 22.99",
+                "name": "Penne Pesto",
+                "price": "22.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Basil Pesto, Chicken, Sun-dried Tomato"
+              },
+              {
+                "text": "Spaghetti Adriatico – 27.99",
+                "name": "Spaghetti Adriatico",
+                "price": "27.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Shrimp, Beef Sausage, Broccoli Rabe, Garlic, Extra Virgin Olive Oil"
+              },
+              {
+                "text": "Rigatoni Marbella – 21.99",
+                "name": "Rigatoni Marbella",
+                "price": "21.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Eggplant, Chili Peppers, Capers, Artichokes, Spicy Tomato Broth"
+              },
+              {
+                "text": "Lobster Ravioli – 24.99",
+                "name": "Lobster Ravioli",
+                "price": "24.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Shrimp Lobster Cream Sauce"
+              },
+              {
+                "text": "Fettuccine Alfredo with Chicken – 21.99",
+                "name": "Fettuccine Alfredo with Chicken",
+                "price": "21.99",
+                "description": ""
+              },
+              {
+                "text": "Shrimp Fra Diavolo – 27.99",
+                "name": "Shrimp Fra Diavolo",
+                "price": "27.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Spicy Tomato Sauce over Linguine"
+              },
+              {
+                "text": "French Pasta – 27.99",
+                "name": "French Pasta",
+                "price": "27.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Cavatappi, Sausage, Shallots, Peas, Tomato with a Touch of Cream"
+              }
+            ]
+          },
+          {
+            "heading": "Fish",
+            "items": [
+              {
+                "text": "Calamari & Baby Octopus Espagnol – 34.99",
+                "name": "Calamari & Baby Octopus Espagnol",
+                "price": "34.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Tomato Broth, Lemon Zest"
+              },
+              {
+                "text": "Shrimp and Chicken – 27.99",
+                "name": "Shrimp and Chicken",
+                "price": "27.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Roasted Garlic & Herbs"
+              },
+              {
+                "text": "Shrimp Mediterranean – 27.99",
+                "name": "Shrimp Mediterranean",
+                "price": "27.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Lemon, Garlic, Onion"
+              },
+              {
+                "text": "Shrimp Andalucia – 27.99",
+                "name": "Shrimp Andalucia",
+                "price": "27.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Smoked Chorizo, Spinach, Garlic, Olive Oil"
+              },
+              {
+                "text": "Shrimp San Marino – 27.99",
+                "name": "Shrimp San Marino",
+                "price": "27.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Radicchio, Fresh Tomato, Capers, White Wine Sauce"
+              },
+              {
+                "text": "Shrimp and Scallops – 34.99",
+                "name": "Shrimp and Scallops",
+                "price": "34.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Lobster Cream Sauce"
+              },
+              {
+                "text": "Scallops and Chicken – 34.99",
+                "name": "Scallops and Chicken",
+                "price": "34.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Sherry Tomato, Roasted Peppers, Shallots, Cognac"
+              },
+              {
+                "text": "Pan Seared Scallops – 34.99",
+                "name": "Pan Seared Scallops",
+                "price": "34.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Wrapped in Smoked Salmon, Lemon, Garlic, White Wine"
+              },
+              {
+                "text": "St. Peter’s Fish – 24.99",
+                "name": "St. Peter’s Fish",
+                "price": "24.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Tilapia, Cherry Tomato, Capers, Artichoke, White Wine"
+              },
+              {
+                "text": "Fresh Atlantic Salmon – 27.99",
+                "name": "Fresh Atlantic Salmon",
+                "price": "27.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Pan Seared, Lemon Zest"
+              },
+              {
+                "text": "Seafood Fra Diavolo – 34.99",
+                "name": "Seafood Fra Diavolo",
+                "price": "34.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Clams, Mussels, Calamari, Shrimp & Sole in Spicy Tomato Sauce"
+              },
+              {
+                "text": "Seafood Sensebastian – 34.99",
+                "name": "Seafood Sensebastian",
+                "price": "34.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Shrimp, Mussels, Clams, Calamari, Smoked Chorizo in Garlic Broth"
+              },
+              {
+                "text": "Blackened Atlantic Salmon & Shrimp – 34.99",
+                "name": "Blackened Atlantic Salmon & Shrimp",
+                "price": "34.99",
+                "description": ""
+              },
+              {
+                "text": "Seven Fishes – 49.99",
+                "name": "Seven Fishes",
+                "price": "49.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Shrimp, Clams, Mussels, Calamari, Octopus, Scallops, Sole, Tomato Sauce"
+              }
+            ]
+          },
+          {
+            "heading": "Salad Entrées",
+            "items": [
+              {
+                "text": "Renee Salad – 27.99",
+                "name": "Renee Salad",
+                "price": "27.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Grilled Shrimp, Burrata Cheese, Mixed Greens, Vinaigrette"
+              },
+              {
+                "text": "Adina Salad – 27.99",
+                "name": "Adina Salad",
+                "price": "27.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Grilled Salmon, Arugula, Mozzarella, Tomato, Olive Oil"
+              },
+              {
+                "text": "NY Strip Steak Salad – 39.99",
+                "name": "NY Strip Steak Salad",
+                "price": "39.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "12oz NY Strip, Mixed Greens, Tomato, Onion, Balsamic"
+              },
+              {
+                "text": "Grilled Chicken Paillard Salad – 19.99",
+                "name": "Grilled Chicken Paillard Salad",
+                "price": "19.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Arugula, Lemon, Shaved Parmesan"
+              },
+              {
+                "text": "Louisiana Salad – 27.99",
+                "name": "Louisiana Salad",
+                "price": "27.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Blackened Chicken & Shrimp, Mixed Greens, Beets, Tomatoes, Olive Oil & Balsamic"
+              }
+            ]
+          },
+          {
+            "heading": "Risotto",
+            "items": [
+              {
+                "text": "Mushroom Risotto – 23.99",
+                "name": "Mushroom Risotto",
+                "price": "23.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Mushrooms, Truffle Oil, Shaved Parmesan"
+              },
+              {
+                "text": "Eggplant Risotto – 23.99",
+                "name": "Eggplant Risotto",
+                "price": "23.99",
+                "description": ""
+              },
+              {
+                "text": "Chicken Risotto – 23.99",
+                "name": "Chicken Risotto",
+                "price": "23.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Spinach, Tomato, Shaved Parmesan"
+              },
+              {
+                "text": "Seafood Risotto – 34.99",
+                "name": "Seafood Risotto",
+                "price": "34.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Calamari, Shrimp, Clams, Mussels, Tomato Broth"
+              },
+              {
+                "text": "Shrimp Risotto – 27.99",
+                "name": "Shrimp Risotto",
+                "price": "27.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Asparagus, Sun-dried Tomatoes"
+              },
+              {
+                "text": "Scallops Risotto – 34.99",
+                "name": "Scallops Risotto",
+                "price": "34.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Asparagus Purée"
+              }
+            ]
+          },
+          {
+            "heading": "Sides",
+            "items": [
+              {
+                "text": "Grilled Asparagus – 7.99",
+                "name": "Grilled Asparagus",
+                "price": "7.99",
+                "description": ""
+              },
+              {
+                "text": "French Fries – 6.99",
+                "name": "French Fries",
+                "price": "6.99",
+                "description": ""
+              },
+              {
+                "text": "Truffle Fries – 6.99",
+                "name": "Truffle Fries",
+                "price": "6.99",
+                "description": ""
+              },
+              {
+                "text": "Sautéed Spinach – 6.99",
+                "name": "Sautéed Spinach",
+                "price": "6.99",
+                "description": ""
+              },
+              {
+                "text": "Side Rice – 5.99",
+                "name": "Side Rice",
+                "price": "5.99",
+                "description": ""
+              },
+              {
+                "text": "Broccoli Rabe – 9.99",
+                "name": "Broccoli Rabe",
+                "price": "9.99",
+                "description": ""
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "excerpt": {
+      "rendered": "Starters French Onion Soup – 7.99 Lobster Bisque Soup – 7.99 Crispy Calamari – 14.99 House Made Hummus – 12.99(Fresh Pita) Tomato Burrata – 12.99(Burrata Cheese, Ripe Tomato, Basil, Balsamic Glaze, Olive Oil) Grilled Octopus – 14.99(Mixed Greens, Chorizo, Smoked Paprika Vinaigrette) Charcuterie Board – 14.99(Olives and Cheese) Sautéed Calamari – 14.99(Chorizo, White Wine) Bocconcini di Mozzarella – 12.99(Baked Mozzarella, Prosciutto, Tomato Broth) Prosciutto […]"
+    }
+  },
+  "lunch-menu": {
+    "id": 1969,
+    "date": "2026-01-04T22:15:37",
+    "slug": "lunch-menu",
+    "title": {
+      "rendered": "lunch-menu"
+    },
+    "content": {
+      "rendered": {
+        "type": "menu",
+        "sections": [
+          {
+            "heading": "Starters",
+            "items": [
+              {
+                "text": "French Onion Soup – 7.99",
+                "name": "French Onion Soup",
+                "price": "7.99",
+                "description": ""
+              },
+              {
+                "text": "Lobster Bisque Soup – 7.99",
+                "name": "Lobster Bisque Soup",
+                "price": "7.99",
+                "description": ""
+              },
+              {
+                "text": "Crispy Calamari – 14.99",
+                "name": "Crispy Calamari",
+                "price": "14.99",
+                "description": ""
+              },
+              {
+                "text": "House Made Hummus – 12.99",
+                "name": "House Made Hummus",
+                "price": "12.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Fresh Pita"
+              },
+              {
+                "text": "Tomato Burrata – 14.99",
+                "name": "Tomato Burrata",
+                "price": "14.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Burrata Cheese, Ripe Tomato, Basil, Balsamic Glaze, Olive Oil"
+              },
+              {
+                "text": "Grilled Octopus – 14.99",
+                "name": "Grilled Octopus",
+                "price": "14.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Grilled Octopus with Smoked Paprika Vinaigrette"
+              },
+              {
+                "text": "Charcuterie Board – 12.99",
+                "name": "Charcuterie Board",
+                "price": "12.99",
+                "description": ""
+              },
+              {
+                "text": "Sautéed Calamari – 14.99",
+                "name": "Sautéed Calamari",
+                "price": "14.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Chorizo, White Wine"
+              },
+              {
+                "text": "Bocconcini di Mozzarella – 12.99",
+                "name": "Bocconcini di Mozzarella",
+                "price": "12.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Baked Mozzarella, Prosciutto, Tomato Broth"
+              },
+              {
+                "text": "Prosciutto Wrapped Fresh Melon – 12.99",
+                "name": "Prosciutto Wrapped Fresh Melon",
+                "price": "12.99",
+                "description": ""
+              },
+              {
+                "text": "Tarte de Barcelona – 12.99",
+                "name": "Tarte de Barcelona",
+                "price": "12.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Apple, Bacon, Brie"
+              },
+              {
+                "text": "Mixed Marinated Olives of Spain – 9.99",
+                "name": "Mixed Marinated Olives of Spain",
+                "price": "9.99",
+                "description": ""
+              },
+              {
+                "text": "Garlic Shrimp Crostini – 9.99",
+                "name": "Garlic Shrimp Crostini",
+                "price": "9.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Roasted Shrimp on Garlic Toast Point"
+              },
+              {
+                "text": "Sausage Calabrian – 12.99",
+                "name": "Sausage Calabrian",
+                "price": "12.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Grilled Sweet Sausage with Hot Peppers & Caramelized Onions"
+              },
+              {
+                "text": "Eggplant Rollatini – 12.99",
+                "name": "Eggplant Rollatini",
+                "price": "12.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Grilled Eggplant, Roasted Tomato & Fresh Mozzarella"
+              },
+              {
+                "text": "Smoked Salmon Carpaccio – 14.99",
+                "name": "Smoked Salmon Carpaccio",
+                "price": "14.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "with Arugula, Capers and Onions"
+              }
+            ]
+          },
+          {
+            "heading": "European Style Sandwiches",
+            "items": [
+              {
+                "text": "Served with Fries",
+                "description": ""
+              },
+              {
+                "text": "Prosciutto, Tomato, Basil and Mozzarella – 14.99",
+                "name": "Prosciutto, Tomato, Basil and Mozzarella",
+                "price": "14.99",
+                "description": ""
+              },
+              {
+                "text": "Chicken Arugula Baguette – 14.99",
+                "name": "Chicken Arugula Baguette",
+                "price": "14.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "with Tomatoes, Fresh Mozzarella, and Balsamic Reduction"
+              },
+              {
+                "text": "Smoked Salmon Baguette – 14.99",
+                "name": "Smoked Salmon Baguette",
+                "price": "14.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "with Lemon, Arugula, Capers"
+              },
+              {
+                "text": "Sole Sandwich – 14.99",
+                "name": "Sole Sandwich",
+                "price": "14.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "crispy sole with tartar sauce"
+              },
+              {
+                "text": "Sausage and Onion – 14.99",
+                "name": "Sausage and Onion",
+                "price": "14.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "sweet sausage, balsamic glaze"
+              }
+            ]
+          },
+          {
+            "heading": "Salads",
+            "items": [
+              {
+                "text": "with Grilled Chicken +6",
+                "description": ""
+              },
+              {
+                "text": "with Grilled Shrimp +10",
+                "description": ""
+              },
+              {
+                "text": "with Grilled, Blackened, or Smoked Salmon +10",
+                "description": ""
+              },
+              {
+                "text": "Seasons Salad – 8.99",
+                "name": "Seasons Salad",
+                "price": "8.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Mixed Greens, Tomato, Onion, Balsamic Fig, Apple"
+              },
+              {
+                "text": "Caesar Salad – 9.99",
+                "name": "Caesar Salad",
+                "price": "9.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Hearts of Romaine, Croutons, Parmesan"
+              },
+              {
+                "text": "Trattoria Salad – 9.99",
+                "name": "Trattoria Salad",
+                "price": "9.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Chopped Romaine, Goat Cheese, Cherry Tomatoes, Bacon"
+              },
+              {
+                "text": "Arugula Salad – 9.99",
+                "name": "Arugula Salad",
+                "price": "9.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Arugula, Shaved Parmesan, Lemon Vinaigrette"
+              },
+              {
+                "text": "Roquefort Salad – 9.99",
+                "name": "Roquefort Salad",
+                "price": "9.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Mixed Greens, Walnuts, Roquefort Cheese, Fresh Melon, Vinaigrette"
+              },
+              {
+                "text": "Beet Salad – 9.99",
+                "name": "Beet Salad",
+                "price": "9.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Mixed Greens, Asparagus, Beets, Cherry Tomato, Balsamic"
+              },
+              {
+                "text": "La Linda Salad – 9.99",
+                "name": "La Linda Salad",
+                "price": "9.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Romaine, Cranberry, Tomato and Walnuts in Olive Oil & Balsamic with Shaved Parmesan"
+              }
+            ]
+          },
+          {
+            "heading": "Homemade Pasta",
+            "items": [
+              {
+                "text": "Catalana – 17.99",
+                "name": "Catalana",
+                "price": "17.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Mussels, Clams & Smoked Chorizo in a Garlic Broth over Fettuccine"
+              },
+              {
+                "text": "Orecchiette – 17.99",
+                "name": "Orecchiette",
+                "price": "17.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Mushrooms, Sausage, Sun-Dried Tomatoes, Broccoli, Garlic and Oil"
+              },
+              {
+                "text": "Rigatoni Bolognese – 17.99",
+                "name": "Rigatoni Bolognese",
+                "price": "17.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Ground Sirloin, Sun-Dried Tomatoes, Touch of Cream"
+              },
+              {
+                "text": "Rigatoni Marsala – 17.99",
+                "name": "Rigatoni Marsala",
+                "price": "17.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Eggplant, Shiitake Mushrooms, Artichoke, in a Spicy Tomato Broth"
+              },
+              {
+                "text": "Linguini with Lamb Ragu – 17.99",
+                "name": "Linguini with Lamb Ragu",
+                "price": "17.99",
+                "description": ""
+              },
+              {
+                "text": "Pappardelle – 17.99",
+                "name": "Pappardelle",
+                "price": "17.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Tomato, Capers, Olive Oil, Garlic"
+              },
+              {
+                "text": "Lobster Ravioli – 17.99",
+                "name": "Lobster Ravioli",
+                "price": "17.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Shrimp Lobster Sauce"
+              },
+              {
+                "text": "Fettuccine Alfredo with Chicken – 17.99",
+                "name": "Fettuccine Alfredo with Chicken",
+                "price": "17.99",
+                "description": ""
+              },
+              {
+                "text": "Fresh Pasta – 17.99",
+                "name": "Fresh Pasta",
+                "price": "17.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Cavatelli, Sausage, Shallots, Peas, Tomato with a Touch of Cream"
+              }
+            ]
+          },
+          {
+            "heading": "Paella",
+            "items": [
+              {
+                "text": "Mallorca Paella – 17.99",
+                "name": "Mallorca Paella",
+                "price": "17.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Chicken, Chorizo, Saffron Rice"
+              },
+              {
+                "text": "Ibiza Paella – 27.99",
+                "name": "Ibiza Paella",
+                "price": "27.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Shrimp, Calamari, Baby Octopus"
+              }
+            ]
+          },
+          {
+            "heading": "Risotto",
+            "items": [
+              {
+                "text": "Mushroom Risotto – 17.99",
+                "name": "Mushroom Risotto",
+                "price": "17.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Mushroom, Truffle Oil, Shaved Parmesan"
+              },
+              {
+                "text": "Eggplant Risotto – 17.99",
+                "name": "Eggplant Risotto",
+                "price": "17.99",
+                "description": ""
+              },
+              {
+                "text": "Chicken Risotto – 17.99",
+                "name": "Chicken Risotto",
+                "price": "17.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Spinach, Tomato, Shaved Parmesan"
+              },
+              {
+                "text": "Seafood Risotto – 27.99",
+                "name": "Seafood Risotto",
+                "price": "27.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Calamari, Shrimp, Clams, Mussels, Tomato Broth"
+              },
+              {
+                "text": "Shrimp Risotto – 21.99",
+                "name": "Shrimp Risotto",
+                "price": "21.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "With Asparagus and Sun-Dried Tomatoes"
+              }
+            ]
+          },
+          {
+            "heading": "Entrées",
+            "items": [
+              {
+                "text": "Fresh Atlantic Salmon – 19.99",
+                "name": "Fresh Atlantic Salmon",
+                "price": "19.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Pan Seared, Lemon Zest"
+              },
+              {
+                "text": "Shrimp Mediterranean – 19.99",
+                "name": "Shrimp Mediterranean",
+                "price": "19.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Lemon, Garlic, Onion"
+              },
+              {
+                "text": "Shrimp Andaluzia – 19.99",
+                "name": "Shrimp Andaluzia",
+                "price": "19.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Smoked Chorizo, Spinach, Garlic, Olive Oil"
+              },
+              {
+                "text": "St. Peter’s Fish – 19.99",
+                "name": "St. Peter’s Fish",
+                "price": "19.99",
+                "description": ""
+              },
+              {
+                "text": "Tilapia – 19.99",
+                "name": "Tilapia",
+                "price": "19.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Cherry Tomato, Capers, Artichoke, White Wine"
+              },
+              {
+                "text": "Calamari & Baby Octopus Espagnol – 27.99",
+                "name": "Calamari & Baby Octopus Espagnol",
+                "price": "27.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Tomato Broth, Lemon Zest"
+              },
+              {
+                "text": "Mussels Marinieres – 19.99",
+                "name": "Mussels Marinieres",
+                "price": "19.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "White Wine, Shallots, Herbs"
+              },
+              {
+                "text": "Chicken Venicia – 17.99",
+                "name": "Chicken Venicia",
+                "price": "17.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Eggplant, Prosciutto, Sherry Wine Sauce, Mozzarella"
+              },
+              {
+                "text": "Chicken Josephine – 17.99",
+                "name": "Chicken Josephine",
+                "price": "17.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Artichokes, Sun-Dried Tomato, Asparagus, White Wine"
+              },
+              {
+                "text": "4 Seasons Chicken – 17.99",
+                "name": "4 Seasons Chicken",
+                "price": "17.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Spinach, Tomato, and Fresh Mozzarella"
+              },
+              {
+                "text": "Chicken Champignon – 17.99",
+                "name": "Chicken Champignon",
+                "price": "17.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Mushrooms, Marsala Wine"
+              },
+              {
+                "text": "Steak Frites – 27.99",
+                "name": "Steak Frites",
+                "price": "27.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Grilled NY Strip with Fries"
+              },
+              {
+                "text": "Pork Chop Bilbao – 22.99",
+                "name": "Pork Chop Bilbao",
+                "price": "22.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Mediterranean Seasoning Double Cut Pork Chop in a Mushroom Cognac Sauce"
+              },
+              {
+                "text": "New York Strip Roquefort – 27.99",
+                "name": "New York Strip Roquefort",
+                "price": "27.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Spinach, Tomato, and Fresh Mozzarella salad"
+              }
+            ]
+          },
+          {
+            "heading": "Comfort Food",
+            "items": [
+              {
+                "text": "Chicken Parmigiana – 17.99",
+                "name": "Chicken Parmigiana",
+                "price": "17.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Breaded Chicken, Tomato Sauce and Mozzarella"
+              },
+              {
+                "text": "Chicken Francese – 17.99",
+                "name": "Chicken Francese",
+                "price": "17.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Sautéed Chicken Cutlets, Lemon-Butter, White Wine Sauce"
+              },
+              {
+                "text": "Spaghetti with Beef Meatballs – 17.99",
+                "name": "Spaghetti with Beef Meatballs",
+                "price": "17.99",
+                "description": ""
+              },
+              {
+                "text": "",
+                "description": "Traditional Tomato-Based Sauce"
+              }
+            ]
+          },
+          {
+            "heading": "Sides",
+            "items": [
+              {
+                "text": "Grilled Asparagus – 6.99",
+                "name": "Grilled Asparagus",
+                "price": "6.99",
+                "description": ""
+              },
+              {
+                "text": "Sautéed Mushroom – 6.99",
+                "name": "Sautéed Mushroom",
+                "price": "6.99",
+                "description": ""
+              },
+              {
+                "text": "Mixed Olives – 6.99",
+                "name": "Mixed Olives",
+                "price": "6.99",
+                "description": ""
+              },
+              {
+                "text": "Truffle Fries – 6.99",
+                "name": "Truffle Fries",
+                "price": "6.99",
+                "description": ""
+              },
+              {
+                "text": "Spanish Rice – 6.99",
+                "name": "Spanish Rice",
+                "price": "6.99",
+                "description": ""
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "excerpt": {
+      "rendered": "Starters French Onion Soup – 7.99 Lobster Bisque Soup – 7.99 Crispy Calamari – 14.99 House Made Hummus – 12.99(Fresh Pita) Tomato Burrata – 14.99(Burrata Cheese, Ripe Tomato, Basil, Balsamic Glaze, Olive Oil) Grilled Octopus – 14.99(Grilled Octopus with Smoked Paprika Vinaigrette) Charcuterie Board – 12.99 Sautéed Calamari – 14.99(Chorizo, White Wine) Bocconcini di Mozzarella […]"
+    }
+  },
+  "featured-items": {
+    "id": 1949,
+    "date": "2026-01-04T04:24:40",
+    "slug": "featured-items",
+    "title": {
+      "rendered": "featured-items"
+    },
+    "content": {
+      "rendered": {
+        "type": "gallery",
+        "images": [
+          {
+            "url": "https://4seasonswharton.com/wp-content/uploads/2026/01/drink-2.png",
+            "alt": "Featured drink",
+            "width": 768,
+            "height": 1024,
+            "srcSet": "https://4seasonswharton.com/wp-content/uploads/2026/01/drink-2-768x1024.png 768w, https://4seasonswharton.com/wp-content/uploads/2026/01/drink-2-225x300.png 225w, https://4seasonswharton.com/wp-content/uploads/2026/01/drink-2-1152x1536.png 1152w, https://4seasonswharton.com/wp-content/uploads/2026/01/drink-2-1536x2048.png 1536w, https://4seasonswharton.com/wp-content/uploads/2026/01/drink-2-scaled.png 1920w",
+            "sizes": "auto, (max-width: 768px) 100vw, 768px"
+          },
+          {
+            "url": "https://4seasonswharton.com/wp-content/uploads/2026/01/food-1.png",
+            "alt": "Featured pasta",
+            "width": 768,
+            "height": 1024,
+            "srcSet": "https://4seasonswharton.com/wp-content/uploads/2026/01/food-1-768x1024.png 768w, https://4seasonswharton.com/wp-content/uploads/2026/01/food-1-225x300.png 225w, https://4seasonswharton.com/wp-content/uploads/2026/01/food-1-1152x1536.png 1152w, https://4seasonswharton.com/wp-content/uploads/2026/01/food-1-1536x2048.png 1536w, https://4seasonswharton.com/wp-content/uploads/2026/01/food-1-scaled.png 1920w",
+            "sizes": "auto, (max-width: 768px) 100vw, 768px"
+          },
+          {
+            "url": "https://4seasonswharton.com/wp-content/uploads/2026/01/dessert-1.jpg",
+            "alt": "Featured dessert",
+            "width": 1024,
+            "height": 768,
+            "srcSet": "https://4seasonswharton.com/wp-content/uploads/2026/01/dessert-1-1024x768.jpg 1024w, https://4seasonswharton.com/wp-content/uploads/2026/01/dessert-1-300x225.jpg 300w, https://4seasonswharton.com/wp-content/uploads/2026/01/dessert-1-768x576.jpg 768w, https://4seasonswharton.com/wp-content/uploads/2026/01/dessert-1-1536x1152.jpg 1536w, https://4seasonswharton.com/wp-content/uploads/2026/01/dessert-1.jpg 2048w",
+            "sizes": "auto, (max-width: 1024px) 100vw, 1024px"
+          }
+        ]
+      }
+    },
+    "excerpt": {
+      "rendered": ""
+    }
+  },
+  "dining-ambiance": {
+    "id": 1938,
+    "date": "2026-01-04T04:17:03",
+    "slug": "dining-ambiance",
+    "title": {
+      "rendered": "dining-ambiance"
+    },
+    "content": {
+      "rendered": {
+        "type": "gallery",
+        "images": [
+          {
+            "url": "https://4seasonswharton.com/wp-content/uploads/2026/01/dining-1.png",
+            "alt": "Inside 4Seasons dining room",
+            "width": 768,
+            "height": 1024,
+            "srcSet": "https://4seasonswharton.com/wp-content/uploads/2026/01/dining-1-768x1024.png 768w, https://4seasonswharton.com/wp-content/uploads/2026/01/dining-1-225x300.png 225w, https://4seasonswharton.com/wp-content/uploads/2026/01/dining-1-1152x1536.png 1152w, https://4seasonswharton.com/wp-content/uploads/2026/01/dining-1-1536x2048.png 1536w, https://4seasonswharton.com/wp-content/uploads/2026/01/dining-1-scaled.png 1920w",
+            "sizes": "auto, (max-width: 768px) 100vw, 768px"
+          },
+          {
+            "url": "https://4seasonswharton.com/wp-content/uploads/2026/01/dining-2.png",
+            "alt": "A view of our patio",
+            "width": 1024,
+            "height": 1024,
+            "srcSet": "https://4seasonswharton.com/wp-content/uploads/2026/01/dining-2-1024x1024.png 1024w, https://4seasonswharton.com/wp-content/uploads/2026/01/dining-2-300x300.png 300w, https://4seasonswharton.com/wp-content/uploads/2026/01/dining-2-150x150.png 150w, https://4seasonswharton.com/wp-content/uploads/2026/01/dining-2-768x768.png 768w, https://4seasonswharton.com/wp-content/uploads/2026/01/dining-2-1536x1536.png 1536w, https://4seasonswharton.com/wp-content/uploads/2026/01/dining-2-2048x2048.png 2048w",
+            "sizes": "auto, (max-width: 1024px) 100vw, 1024px"
+          },
+          {
+            "url": "https://4seasonswharton.com/wp-content/uploads/2026/01/dining-3.png",
+            "alt": "The iconic 4Seasons monkey statue",
+            "width": 768,
+            "height": 1024,
+            "srcSet": "https://4seasonswharton.com/wp-content/uploads/2026/01/dining-3-768x1024.png 768w, https://4seasonswharton.com/wp-content/uploads/2026/01/dining-3-225x300.png 225w, https://4seasonswharton.com/wp-content/uploads/2026/01/dining-3-1152x1536.png 1152w, https://4seasonswharton.com/wp-content/uploads/2026/01/dining-3-1536x2048.png 1536w, https://4seasonswharton.com/wp-content/uploads/2026/01/dining-3-scaled.png 1920w",
+            "sizes": "auto, (max-width: 768px) 100vw, 768px"
+          }
+        ]
+      }
+    },
+    "excerpt": {
+      "rendered": ""
+    }
+  },
+  "home-gallery": {
+    "id": 1891,
+    "date": "2026-01-04T01:37:22",
+    "slug": "home-gallery",
+    "title": {
+      "rendered": "home-gallery"
+    },
+    "content": {
+      "rendered": {
+        "type": "gallery",
+        "images": [
+          {
+            "url": "https://4seasonswharton.com/wp-content/uploads/2026/01/main-1-1.png",
+            "alt": "4Seasons dish",
+            "width": 768,
+            "height": 1024,
+            "srcSet": "https://4seasonswharton.com/wp-content/uploads/2026/01/main-1-1-768x1024.png 768w, https://4seasonswharton.com/wp-content/uploads/2026/01/main-1-1-225x300.png 225w, https://4seasonswharton.com/wp-content/uploads/2026/01/main-1-1-1152x1536.png 1152w, https://4seasonswharton.com/wp-content/uploads/2026/01/main-1-1-1536x2048.png 1536w, https://4seasonswharton.com/wp-content/uploads/2026/01/main-1-1-scaled.png 1920w",
+            "sizes": "auto, (max-width: 768px) 100vw, 768px"
+          },
+          {
+            "url": "https://4seasonswharton.com/wp-content/uploads/2026/01/main-2.png",
+            "alt": "4Seasons salmon",
+            "width": 768,
+            "height": 1024,
+            "srcSet": "https://4seasonswharton.com/wp-content/uploads/2026/01/main-2-768x1024.png 768w, https://4seasonswharton.com/wp-content/uploads/2026/01/main-2-225x300.png 225w, https://4seasonswharton.com/wp-content/uploads/2026/01/main-2-1152x1536.png 1152w, https://4seasonswharton.com/wp-content/uploads/2026/01/main-2-1536x2048.png 1536w, https://4seasonswharton.com/wp-content/uploads/2026/01/main-2-scaled.png 1920w",
+            "sizes": "auto, (max-width: 768px) 100vw, 768px"
+          },
+          {
+            "url": "https://4seasonswharton.com/wp-content/uploads/2026/01/drink-1.png",
+            "alt": "4Seasons cocktail",
+            "width": 1024,
+            "height": 768,
+            "srcSet": "https://4seasonswharton.com/wp-content/uploads/2026/01/drink-1-1024x768.png 1024w, https://4seasonswharton.com/wp-content/uploads/2026/01/drink-1-300x225.png 300w, https://4seasonswharton.com/wp-content/uploads/2026/01/drink-1-768x576.png 768w, https://4seasonswharton.com/wp-content/uploads/2026/01/drink-1-1536x1152.png 1536w, https://4seasonswharton.com/wp-content/uploads/2026/01/drink-1-2048x1536.png 2048w",
+            "sizes": "auto, (max-width: 1024px) 100vw, 1024px"
+          },
+          {
+            "url": "https://4seasonswharton.com/wp-content/uploads/2026/01/Abe-scaled-1.png",
+            "alt": "4Seasons owner serving a happy customer",
+            "width": 683,
+            "height": 1024,
+            "srcSet": "https://4seasonswharton.com/wp-content/uploads/2026/01/Abe-scaled-1-683x1024.png 683w, https://4seasonswharton.com/wp-content/uploads/2026/01/Abe-scaled-1-1365x2048.png 1365w, https://4seasonswharton.com/wp-content/uploads/2026/01/Abe-scaled-1-200x300.png 200w, https://4seasonswharton.com/wp-content/uploads/2026/01/Abe-scaled-1-768x1152.png 768w, https://4seasonswharton.com/wp-content/uploads/2026/01/Abe-scaled-1-1024x1536.png 1024w, https://4seasonswharton.com/wp-content/uploads/2026/01/Abe-scaled-1-scaled.png 1707w",
+            "sizes": "auto, (max-width: 683px) 100vw, 683px"
+          },
+          {
+            "url": "https://4seasonswharton.com/wp-content/uploads/2026/01/patio-1-scaled-1.png",
+            "alt": "Customers enjoying thier meal on our patio",
+            "width": 768,
+            "height": 1024,
+            "srcSet": "https://4seasonswharton.com/wp-content/uploads/2026/01/patio-1-scaled-1-768x1024.png 768w, https://4seasonswharton.com/wp-content/uploads/2026/01/patio-1-scaled-1-225x300.png 225w, https://4seasonswharton.com/wp-content/uploads/2026/01/patio-1-scaled-1-1152x1536.png 1152w, https://4seasonswharton.com/wp-content/uploads/2026/01/patio-1-scaled-1-1536x2048.png 1536w, https://4seasonswharton.com/wp-content/uploads/2026/01/patio-1-scaled-1-scaled.png 1920w",
+            "sizes": "auto, (max-width: 768px) 100vw, 768px"
+          },
+          {
+            "url": "https://4seasonswharton.com/wp-content/uploads/2026/01/Abe-2-scaled-1.png",
+            "alt": "4Seasons owner making drinks on Christmas Eve",
+            "width": 683,
+            "height": 1024,
+            "srcSet": "https://4seasonswharton.com/wp-content/uploads/2026/01/Abe-2-scaled-1-683x1024.png 683w, https://4seasonswharton.com/wp-content/uploads/2026/01/Abe-2-scaled-1-200x300.png 200w, https://4seasonswharton.com/wp-content/uploads/2026/01/Abe-2-scaled-1-768x1152.png 768w, https://4seasonswharton.com/wp-content/uploads/2026/01/Abe-2-scaled-1-1024x1536.png 1024w, https://4seasonswharton.com/wp-content/uploads/2026/01/Abe-2-scaled-1-1365x2048.png 1365w, https://4seasonswharton.com/wp-content/uploads/2026/01/Abe-2-scaled-1-scaled.png 1707w",
+            "sizes": "auto, (max-width: 683px) 100vw, 683px"
+          }
+        ]
+      }
+    },
+    "excerpt": {
+      "rendered": ""
+    }
+  }
+}

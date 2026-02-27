@@ -30,31 +30,33 @@ export default function WPText({
     className = '',
     href
 }: WPTextProps) {
-    const { data, loading, error } = useWPData<WP_Page>({
+    const { data, loading } = useWPData<WP_Page>({
         slug,
         field,
         enabled: !isStatic
     });
 
-    const Tag = tag as any;
+    const Tag = tag as React.ElementType;
 
     // Logic: content extraction
     let displayContent = isStatic ? staticData : (data || staticData);
 
     // If fetching 'whole_page_object' (which returns an object) but we want text
     // we need to parse it. This happens if the user genericized the component.
-    if (!isStatic && field === 'whole_page_object' && data?.content?.rendered) {
-        // Example: If I want just the H1 from the page content
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(data.content.rendered, 'text/html');
-        // Simple extraction heuristic based on 'tag' prop
-        const foundElement = doc.querySelector(tag);
-        if (foundElement) {
-            displayContent = foundElement.innerHTML;
+    if (!isStatic && field === 'whole_page_object' && (data as WP_Page & { content?: { rendered?: string } })?.content?.rendered) {
+        if (typeof window !== 'undefined') {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString((data as WP_Page & { content: { rendered: string } }).content.rendered, 'text/html');
+            const foundElement = doc.querySelector(tag);
+            if (foundElement) {
+                displayContent = foundElement.innerHTML;
+            } else {
+                displayContent = undefined;
+            }
         } else {
-            // Fallback: render nothing if specific tag not found in content
-            // OR render whole content? Let's render nothing for precision filtering
-            displayContent = undefined;
+            // SSR Fallback: basic regex or just wait for client
+            const tagMatch = (data as WP_Page & { content: { rendered: string } }).content.rendered.match(new RegExp(`<${tag}[^>]*>(.*?)</${tag}>`, 'i'));
+            displayContent = tagMatch ? tagMatch[1] : undefined;
         }
     }
 

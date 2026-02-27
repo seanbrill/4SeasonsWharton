@@ -17,7 +17,6 @@ export default function Header() {
         { href: '/', label: 'Home' },
         { href: '/menu', label: 'Menu' },
         { href: '/catering', label: 'Catering' },
-        { href: '/events', label: 'Events' },
         { href: '/contact-us', label: 'Contact' },
     ];
 

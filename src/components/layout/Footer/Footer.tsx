@@ -33,6 +33,7 @@ export default function Footer() {
                         className="inline-flex items-center gap-3 px-6 py-3 bg-white border-2 border-gray-300 rounded-full hover:border-amber-500 hover:bg-amber-50 transition-all duration-200 shadow-sm hover:shadow-md"
                         aria-label="Order on Grubhub"
                     >
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img src="https://cdn.worldvectorlogo.com/logos/grubhub-1.svg" alt="Grubhub" className="h-8 w-auto" />
                         <span className="text-sm font-semibold text-gray-700">Order Online</span>
                     </a>

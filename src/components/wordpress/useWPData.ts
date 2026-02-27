@@ -1,8 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { WORDPRESS_API_URL } from '@/lib/constants';
+import { useState } from 'react';
 import type { UseWPDataResult } from '@/types/wordpress';
+import pagesData from '@/data/pages.json';
 
 interface UseWPDataProps {
     slug: string;
@@ -11,110 +11,52 @@ interface UseWPDataProps {
 }
 
 /**
- * Custom hook for fetching WordPress page/post data
- * 
- * @param props - Configuration object
- * @param props.slug - WordPress page/post slug
- * @param props.field - Field path to extract (supports dot notation like 'acf.hero_text')
- * @param props.enabled - Whether to fetch data (useful for conditional fetching)
- * 
- * @returns Object containing data, loading state, and error message
- * 
- * @example
- * ```tsx
- * const { data, loading, error } = useWPData({
- *   slug: 'home',
- *   field: 'content.rendered',
- *   enabled: true
- * });
- * ```
+ * Custom hook for fetching WordPress page/post data (Now completely Static)
  */
 export function useWPData<T = unknown>(props: UseWPDataProps): UseWPDataResult<T> {
     const { slug, field, enabled } = props;
-    const [data, setData] = useState<T | null>(null);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState<string | null>(null);
 
-    useEffect(() => {
-        if (!enabled) return;
+    // Calculate synchronously on first render so there's never a layout shift!
+    const computeData = (): T | null => {
+        if (!enabled) return null;
 
-        const fetchData = async () => {
-            setLoading(true);
-            setError(null);
+        try {
+            const pageData = (pagesData as Record<string, unknown>)[slug];
 
-            try {
-                // Fetch the page by slug with cache-busting timestamp
-                // Fetch the page by slug using robust "plain" permalink structure
-                // This bypasses server rewrite rule conflicts with /wp-json/
-                // Clean base URL to remove potential /wp-json suffix if present
-                const baseUrl = WORDPRESS_API_URL.replace(/\/wp-json\/?$/, '');
-
-                // Construct robust API URL using index.php?rest_route=
-                const apiUrl = `${baseUrl}/index.php?rest_route=/`;
-
-                const res = await fetch(
-                    `${apiUrl}wp/v2/pages&slug=${slug}&_embed&t=${Date.now()}`,
-                    {
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                    }
-                );
-
-                if (!res.ok) {
-                    throw new Error(`Failed to fetch from WordPress: ${res.status} ${res.statusText}`);
-                }
-
-                const json = await res.json();
-
-                // If no page found, return null data
-                if (!json || json.length === 0) {
-                    console.warn(`Page/Post not found for slug: ${slug}`);
-                    setData(null);
-                    setLoading(false);
-                    return;
-                }
-
-                const pageData = json[0];
-
-                // Special case: return whole object
-                if (field === 'whole_page_object') {
-                    setData(pageData as T);
-                    setLoading(false);
-                    return;
-                }
-
-                // Resolve dot notation for field (e.g. 'acf.header.title')
-                const fieldPath = field.split('.');
-                let result: unknown = pageData;
-
-                for (const key of fieldPath) {
-                    if (result && typeof result === 'object' && key in result) {
-                        result = (result as Record<string, unknown>)[key];
-                    } else {
-                        // Try typical locations if direct path fails
-                        const resultObj = result as Record<string, unknown>;
-                        if (resultObj.acf && typeof resultObj.acf === 'object' && key in resultObj.acf) {
-                            result = (resultObj.acf as Record<string, unknown>)[key];
-                        } else {
-                            result = null;
-                            break;
-                        }
-                    }
-                }
-
-                setData(result as T);
-            } catch (err) {
-                const errorMessage = err instanceof Error ? err.message : 'Unknown error occurred';
-                console.error('WP Fetch Error:', errorMessage);
-                setError(errorMessage);
-            } finally {
-                setLoading(false);
+            if (!pageData) {
+                console.warn(`Page not found in local JSON for slug: ${slug}`);
+                return null;
             }
-        };
 
-        fetchData();
-    }, [slug, field, enabled]);
+            // Special case: return whole object
+            if (field === 'whole_page_object') {
+                return pageData as T;
+            }
 
-    return { data, loading, error };
+            // Resolve dot notation for field
+            const fieldPath = field.split('.');
+            let result: unknown = pageData;
+
+            for (const key of fieldPath) {
+                if (result && typeof result === 'object' && key in result) {
+                    result = (result as Record<string, unknown>)[key];
+                } else {
+                    result = null;
+                    break;
+                }
+            }
+
+            return result as T;
+        } catch (err) {
+            console.error('Error parsing static WP Data:', err);
+            return null;
+        }
+    };
+
+    // We can rely entirely on synchronous state initialization 
+    // Since Next.js RSC and SSR will execute this, `data` is immediately available.
+    const [data] = useState<T | null>(computeData);
+
+    // There is never a loading or error state in a fully static JSON app
+    return { data, loading: false, error: null };
 }

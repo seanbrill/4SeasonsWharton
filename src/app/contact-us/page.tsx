@@ -1,5 +1,4 @@
 import { getPageContent } from "@/lib/wordpress/api";
-import WPContent from "@/components/wordpress/WPContent/WPContent";
 import WPText from "@/components/wordpress/WPText/WPText";
 import { siteConfig } from "@/config/site";
 import { Metadata } from "next";
@@ -28,7 +27,7 @@ export default async function Page() {
                     />
                     <div className="w-24 h-1 bg-amber-600 mx-auto rounded-full mb-6"></div>
                     <p className="text-xl text-stone-600 max-w-2xl mx-auto">
-                        We'd love to hear from you. Reach out for reservations, events, or any questions.
+                        We&apos;d love to hear from you. Reach out for reservations, events, or any questions.
                     </p>
                 </div>
             </div>

@@ -29,7 +29,7 @@ export interface WP_Post {
         rendered: string;
     };
     _embedded?: WP_Embedded;
-    acf?: Record<string, any>; // Flexible for now, can be typed strictly if schema is known
+    acf?: Record<string, unknown>; // Flexible for now, can be typed strictly if schema is known
 }
 
 export interface WP_Page extends WP_Post {

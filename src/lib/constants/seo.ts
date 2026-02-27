@@ -34,5 +34,5 @@ export const BUSINESS_INFO = {
     acceptsReservations: true,
 } as const;
 
-// Default OG Image (should be created/uploaded)
+// Default OG Image
 export const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.png`;

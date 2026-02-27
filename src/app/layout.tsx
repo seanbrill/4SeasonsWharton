@@ -98,7 +98,7 @@ export default function RootLayout({
   const restaurantSchema = generateRestaurantSchema();
 
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         {/* Structured Data */}
         <script

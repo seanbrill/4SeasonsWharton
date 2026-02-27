@@ -12,14 +12,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
         '',
         '/menu',
         '/catering',
-        '/events',
         '/contact-us',
     ];
 
     return routes.map((route) => ({
         url: `${SITE_URL}${route}`,
         lastModified: new Date(),
-        changeFrequency: route === '' ? 'daily' : route === '/events' ? 'daily' : 'weekly' as const,
+        changeFrequency: route === '' ? 'daily' : 'weekly' as const,
         priority: route === '' ? 1.0 : route === '/menu' ? 0.9 : 0.8,
     }));
 }
