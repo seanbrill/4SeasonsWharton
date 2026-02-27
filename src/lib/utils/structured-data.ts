@@ -2,7 +2,7 @@
  * Structured Data (JSON-LD) Generators for SEO
  */
 
-import { BUSINESS_INFO, SITE_NAME, SITE_URL } from '../constants/seo';
+import { restaurantSchema, SITE_NAME, SITE_URL } from '../constants/seo';
 
 export interface StructuredDataProps {
     type: 'Restaurant' | 'Event' | 'Menu' | 'WebPage';
@@ -13,27 +13,7 @@ export interface StructuredDataProps {
  * Generate Restaurant structured data (JSON-LD)
  */
 export function generateRestaurantSchema() {
-    return {
-        '@context': 'https://schema.org',
-        '@type': 'Restaurant',
-        name: BUSINESS_INFO.name,
-        alternateName: BUSINESS_INFO.alternateName,
-        description: BUSINESS_INFO.description,
-        url: BUSINESS_INFO.url,
-        telephone: BUSINESS_INFO.telephone,
-        email: BUSINESS_INFO.email,
-        priceRange: BUSINESS_INFO.priceRange,
-        servesCuisine: BUSINESS_INFO.servesCuisine,
-        acceptsReservations: BUSINESS_INFO.acceptsReservations,
-        address: {
-            '@type': 'PostalAddress',
-            ...BUSINESS_INFO.address,
-        },
-        geo: {
-            '@type': 'GeoCoordinates',
-            ...BUSINESS_INFO.geo,
-        },
-    };
+    return restaurantSchema;
 }
 
 /**
@@ -56,16 +36,13 @@ export function generateEventSchema(event: {
         image: event.image,
         location: {
             '@type': 'Place',
-            name: BUSINESS_INFO.name,
-            address: {
-                '@type': 'PostalAddress',
-                ...BUSINESS_INFO.address,
-            },
+            name: restaurantSchema.name,
+            address: restaurantSchema.address,
         },
         organizer: {
             '@type': 'Restaurant',
-            name: BUSINESS_INFO.name,
-            url: BUSINESS_INFO.url,
+            name: restaurantSchema.name,
+            url: restaurantSchema.url,
         },
     };
 }

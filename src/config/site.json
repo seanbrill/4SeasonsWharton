@@ -1,0 +1,20 @@
+{
+    "wordpress": {
+        "apiUrl": "https://4seasonswharton.com/wp-json"
+    },
+    "contact": {
+        "phone": "(862) 244-9777",
+        "email": "info@4seasonswharton.com",
+        "address": "322 S Main St Wharton, NJ 07885",
+        "mapLink": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3016.247883029671!2d-74.58204618875878!3d40.888377071248186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c30abac4a4e1db%3A0xc727c36ce29ad9da!2s4%20Seasons!5e0!3m2!1sen!2sus!4v1767497813690!5m2!1sen!2sus"
+    },
+    "socials": {
+        "facebook": "https://www.facebook.com/4seasonswharton",
+        "instagram": "https://www.instagram.com/4seasonswharton",
+        "tiktok": "https://www.tiktok.com/@4seasons.wharton",
+        "grubhub": "https://www.grubhub.com/restaurant/4-seasons-restaurant-322-s-main-st-wharton/4483792"
+    },
+    "seo": {
+        "siteUrl": "https://4seasonswharton.com"
+    }
+}

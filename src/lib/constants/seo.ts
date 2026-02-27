@@ -1,38 +1,52 @@
-/**
- * SEO Constants and Metadata Helpers
- */
+import { Metadata } from 'next';
+import siteData from '../../config/site.json';
 
 export const SITE_NAME = '4 Seasons Wharton';
 export const SITE_DESCRIPTION = 'Fine Mediterranean dining and event venue in Wharton, NJ. Experience seasonal flavors from Italy, Spain, and the South of France with outdoor patio dining.';
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://4seasonswharton.com';
-export const SITE_LOCALE = 'en_US';
+export const SITE_URL = siteData.seo.siteUrl;
 
-// Social Media
-export const TWITTER_HANDLE = '@4SeasonsWharton';
-
-// Business Information for Structured Data
-export const BUSINESS_INFO = {
+export const restaurantSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Restaurant',
     name: SITE_NAME,
-    alternateName: '4Seasons Mediterranean',
-    description: SITE_DESCRIPTION,
+    image: `${SITE_URL}/logo.png`,
+    '@id': SITE_URL,
     url: SITE_URL,
-    telephone: process.env.NEXT_PUBLIC_CONTACT_PHONE || '',
-    email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || '',
+    telephone: siteData.contact.phone,
+    email: siteData.contact.email,
     address: {
-        streetAddress: '111 South Main Street',
+        '@type': 'PostalAddress',
+        streetAddress: '322 S Main St',
         addressLocality: 'Wharton',
         addressRegion: 'NJ',
         postalCode: '07885',
         addressCountry: 'US',
     },
     geo: {
-        latitude: 40.8934,
-        longitude: -74.5815,
+        '@type': 'GeoCoordinates',
+        latitude: 40.888377,
+        longitude: -74.582046,
     },
-    priceRange: '$$',
+    // ...other schema properties
+    openingHoursSpecification: [
+        {
+            '@type': 'OpeningHoursSpecification',
+            dayOfWeek: ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+            opens: '11:30',
+            closes: '22:00',
+        },
+        {
+            '@type': 'OpeningHoursSpecification',
+            dayOfWeek: 'Sunday',
+            opens: '11:00',
+            closes: '21:00',
+        },
+    ],
     servesCuisine: ['Mediterranean', 'Italian', 'Spanish', 'French'],
-    acceptsReservations: true,
-} as const;
+    priceRange: '$$',
+    menu: `${SITE_URL}/menu`,
+    acceptsReservations: 'True',
+};
 
 // Default OG Image
 export const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.png`;
